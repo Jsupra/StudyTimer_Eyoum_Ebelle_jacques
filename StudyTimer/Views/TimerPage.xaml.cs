@@ -17,9 +17,12 @@ public partial class TimerPage : ContentPage
     private int _totalCycles = 1;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     private bool _isBreakMode = false;
     private TimeSpan _breakDuration = TimeSpan.FromMinutes(5); 
 
+=======
+>>>>>>> 0832fb5f0367f7ff38136b808dee924e419fccbc
 =======
 >>>>>>> 0832fb5f0367f7ff38136b808dee924e419fccbc
     // --- PROPRIÉTÉS ALIMENTÉES PAR LA NAVIGATION ---
@@ -34,6 +37,7 @@ public partial class TimerPage : ContentPage
                 _timeLeft = _initialDuration;
                 UpdateTimerDisplay();
             }
+<<<<<<< HEAD
 <<<<<<< HEAD
         }
     }
@@ -281,6 +285,8 @@ public partial class TimerPage : ContentPage
             };
 
             DotsContainer.Children.Add(dot);
+=======
+>>>>>>> 0832fb5f0367f7ff38136b808dee924e419fccbc
 =======
 >>>>>>> 0832fb5f0367f7ff38136b808dee924e419fccbc
         }

@@ -48,8 +48,12 @@
 
                     <!-- Champ : Nom d'utilisateur -->
                     <Frame BackgroundColor="#121212" CornerRadius="12" Padding="15,5" HasShadow="False" BorderColor="Transparent">
+<<<<<<< HEAD
                         <Entry x:Name="UsernameEntry"
                                Placeholder="Nom d'utilisateur" 
+=======
+                        <Entry Placeholder="Nom d'utilisateur" 
+>>>>>>> 0832fb5f0367f7ff38136b808dee924e419fccbc
                                TextColor="White" 
                                PlaceholderColor="#A1A1AA" 
                                ClearButtonVisibility="WhileEditing"
@@ -58,8 +62,12 @@
 
                     <!-- Champ : Email -->
                     <Frame BackgroundColor="#121212" CornerRadius="12" Padding="15,5" HasShadow="False" BorderColor="Transparent">
+<<<<<<< HEAD
                         <Entry x:Name="EmailEntry"
                                Placeholder="Adresse e-mail" 
+=======
+                        <Entry Placeholder="Adresse e-mail" 
+>>>>>>> 0832fb5f0367f7ff38136b808dee924e419fccbc
                                Keyboard="Email" 
                                TextColor="White" 
                                PlaceholderColor="#A1A1AA" 
@@ -69,8 +77,12 @@
 
                     <!-- Champ : Mot de passe -->
                     <Frame BackgroundColor="#121212" CornerRadius="12" Padding="15,5" HasShadow="False" BorderColor="Transparent">
+<<<<<<< HEAD
                         <Entry x:Name="PasswordEntry"
                                Placeholder="Mot de passe" 
+=======
+                        <Entry Placeholder="Mot de passe" 
+>>>>>>> 0832fb5f0367f7ff38136b808dee924e419fccbc
                                IsPassword="True" 
                                TextColor="White" 
                                PlaceholderColor="#A1A1AA" 
@@ -80,8 +92,12 @@
 
                     <!-- Champ : Confirmer le mot de passe -->
                     <Frame BackgroundColor="#121212" CornerRadius="12" Padding="15,5" HasShadow="False" BorderColor="Transparent">
+<<<<<<< HEAD
                         <Entry x:Name="ConfirmPasswordEntry"
                                Placeholder="Confirmer le mot de passe" 
+=======
+                        <Entry Placeholder="Confirmer le mot de passe" 
+>>>>>>> 0832fb5f0367f7ff38136b808dee924e419fccbc
                                IsPassword="True" 
                                TextColor="White" 
                                PlaceholderColor="#A1A1AA" 

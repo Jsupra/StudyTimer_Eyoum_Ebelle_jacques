@@ -33,8 +33,12 @@
            FontSize="14" 
            TextColor="#A0A0A0" 
            HorizontalTextAlignment="Start"/>
+<<<<<<< HEAD
             <Entry x:Name="EmailEntry"
            Placeholder="exemple@gmail.com" 
+=======
+            <Entry Placeholder="exemple@gmail.com" 
+>>>>>>> 0832fb5f0367f7ff38136b808dee924e419fccbc
            PlaceholderColor="#666666"
            TextColor="White"
            BackgroundColor="#121212"
@@ -46,8 +50,12 @@
            FontSize="14" 
            TextColor="#A0A0A0" 
            HorizontalTextAlignment="Start"/>
+<<<<<<< HEAD
             <Entry x:Name="PasswordEntry"
            Placeholder="Mot de passe robuste" 
+=======
+            <Entry Placeholder="Mot de passe robuste" 
+>>>>>>> 0832fb5f0367f7ff38136b808dee924e419fccbc
            PlaceholderColor="#666666"
            TextColor="White"
            BackgroundColor="#121212"
