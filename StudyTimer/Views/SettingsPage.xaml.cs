@@ -1,3 +1,6 @@
+using StudyTimer.Services;
+using StudyTimer.ViewModels;
+
 namespace StudyTimer.Views;
 
 public partial class SettingsPage : ContentPage
@@ -7,7 +10,7 @@ public partial class SettingsPage : ContentPage
         InitializeComponent();
     }
 
-    // Protection : redirige vers l'accueil si on utilise le retour natif du téléphone
+    // Protection : redirige vers l'accueil si on utilise le retour natif du tÃ©lÃ©phone
     protected override bool OnBackButtonPressed()
     {
         MainThread.BeginInvokeOnMainThread(async () =>
@@ -18,40 +21,38 @@ public partial class SettingsPage : ContentPage
         return true;
     }
 
-    // Bouton de retour visuel en haut à gauche
+    // Bouton de retour visuel en haut Ã  gauche
     private async void OnBackClicked(object sender, EventArgs e)
     {
         await Shell.Current.GoToAsync("//HomePage", animate: false);
     }
 
-    // Clic sur l'icône Accueil de la barre de navigation
+    // Clic sur l'icÃ´ne Accueil de la barre de navigation
     private async void OnNavigateHome(object sender, EventArgs e)
     {
         await Shell.Current.GoToAsync("//HomePage", animate: false);
     }
 
-    // Clic sur l'icône Statistiques de la barre de navigation
+    // Clic sur l'icÃ´ne Statistiques de la barre de navigation
     private async void OnNavigateStats(object sender, EventArgs e)
     {
         await Shell.Current.GoToAsync("//StatsPage", animate: false);
     }
 
-    // Clic sur une option de réglage classique
+    // Clic sur une option de rÃ©glage classique
     private void OnSettingTapped(object sender, EventArgs e)
     {
-        // Tu pourras rajouter la logique d'ouverture des sous-pages ici
-        Console.WriteLine("Paramètre cliqué !");
+        DisplayAlert("ParamÃ¨tres", "Cette fonctionnalitÃ© sera bientÃ´t disponible.", "OK");
     }
 
-    // Clic sur le bouton rouge "Se déconnecter"
+    // Clic sur le bouton rouge "Se dÃ©connecter"
     private async void OnLogoutTapped(object sender, EventArgs e)
     {
-        // Demande une confirmation avant de déconnecter l'utilisateur
-        bool confirm = await DisplayAlert("Déconnexion", "Voulez-vous vraiment vous déconnecter ?", "Oui", "Annuler");
+        bool confirm = await DisplayAlert("DÃ©connexion", "Voulez-vous vraiment vous dÃ©connecter ?", "Oui", "Annuler");
 
         if (confirm)
         {
-            // Redirige vers la page de Login (Assure-toi que la route est bien définie dans AppShell)
+            AppSession.Logout();
             await Shell.Current.GoToAsync("//LoginPage", animate: true);
         }
     }

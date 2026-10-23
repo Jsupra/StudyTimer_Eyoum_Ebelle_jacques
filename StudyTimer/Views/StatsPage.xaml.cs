@@ -1,3 +1,5 @@
+using StudyTimer.ViewModels;
+
 namespace StudyTimer.Views;
 
 public partial class StatsPage : ContentPage
@@ -7,7 +9,16 @@ public partial class StatsPage : ContentPage
         InitializeComponent();
     }
 
-    // Capture le bouton retour matériel (téléphone) pour éviter de fermer l'application
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+        if (BindingContext is StatsViewModel vm)
+        {
+            await vm.LoadStatsAsync();
+        }
+    }
+
+    // Capture le bouton retour matÃ©riel (tÃ©lÃ©phone) pour Ã©viter de fermer l'application
     protected override bool OnBackButtonPressed()
     {
         MainThread.BeginInvokeOnMainThread(async () =>
@@ -18,19 +29,19 @@ public partial class StatsPage : ContentPage
         return true;
     }
 
-    // Bouton de retour en haut à gauche
+    // Bouton de retour en haut Ã  gauche
     private async void OnBackClicked(object sender, EventArgs e)
     {
         await Shell.Current.GoToAsync("//HomePage", animate: false);
     }
 
-    // Icône Accueil de la barre de navigation
+    // IcÃ´ne Accueil de la barre de navigation
     private async void OnNavigateHome(object sender, EventArgs e)
     {
         await Shell.Current.GoToAsync("//HomePage", animate: false);
     }
 
-    // Icône Paramètres de la barre de navigation
+    // IcÃ´ne ParamÃ¨tres de la barre de navigation
     private async void OnNavigateSettings(object sender, EventArgs e)
     {
         await Shell.Current.GoToAsync("//SettingsPage", animate: false);
