@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 using SQLite;
 
 namespace StudyTimer.Models
@@ -18,21 +17,3 @@ namespace StudyTimer.Models
         public int TargetMinutes { get; set; } = 25;
     }
 }
-=======
-namespace StudyTimer.Models
-{
-    public class StudySubject : ContentPage
-    {
-        public StudySubject()
-        {
-            Content = new VerticalStackLayout
-            {
-                Children = {
-                    new Label { HorizontalOptions = LayoutOptions.Center, VerticalOptions = LayoutOptions.Center, Text = "Welcome to .NET MAUI!"
-                    }
-                }
-            };
-        }
-    }
-}
->>>>>>> 0832fb5f0367f7ff38136b808dee924e419fccbc

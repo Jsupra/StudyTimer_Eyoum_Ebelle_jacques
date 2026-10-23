@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 using System.Collections.ObjectModel;
 using StudyTimer.Models;
 using StudyTimer.Services;
@@ -55,21 +54,3 @@ namespace StudyTimer.ViewModels
         }
     }
 }
-=======
-namespace StudyTimer.ViewModels
-{
-    public class StatsViewModel : ContentPage
-    {
-        public StatsViewModel()
-        {
-            Content = new VerticalStackLayout
-            {
-                Children = {
-                    new Label { HorizontalOptions = LayoutOptions.Center, VerticalOptions = LayoutOptions.Center, Text = "Welcome to .NET MAUI!"
-                    }
-                }
-            };
-        }
-    }
-}
->>>>>>> 0832fb5f0367f7ff38136b808dee924e419fccbc

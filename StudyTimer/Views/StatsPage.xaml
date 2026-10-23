@@ -1,22 +1,16 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-<<<<<<< HEAD
              xmlns:viewmodels="clr-namespace:StudyTimer.ViewModels"
              xmlns:models="clr-namespace:StudyTimer.Models"
-=======
->>>>>>> 0832fb5f0367f7ff38136b808dee924e419fccbc
              x:Class="StudyTimer.Views.StatsPage"
              BackgroundColor="#000000"
              Shell.NavBarIsVisible="False">
 
-<<<<<<< HEAD
     <ContentPage.BindingContext>
         <viewmodels:StatsViewModel />
     </ContentPage.BindingContext>
 
-=======
->>>>>>> 0832fb5f0367f7ff38136b808dee924e419fccbc
     <!-- Même séparation stricte que sur l'accueil : En-tête et Reste -->
     <Grid RowDefinitions="Auto, *">
 
@@ -31,7 +25,6 @@
 
             <!-- Bouton Retour -->
             <Frame Grid.Column="0" 
-<<<<<<< HEAD
                    BackgroundColor="#121212" 
                    CornerRadius="16" 
                    HeightRequest="32" 
@@ -47,23 +40,6 @@
                              VerticalOptions="Center" 
                              BackgroundColor="Transparent" 
                              Clicked="OnBackClicked" />
-=======
-       BackgroundColor="#121212" 
-       CornerRadius="16" 
-       HeightRequest="32" 
-       WidthRequest="32" 
-       Padding="0" 
-       HasShadow="False" 
-       HorizontalOptions="Start" 
-       VerticalOptions="Center">
-                <ImageButton Source="back_icon.png" 
-                 HeightRequest="14" 
-                 WidthRequest="14" 
-                 HorizontalOptions="Center" 
-                 VerticalOptions="Center" 
-                 BackgroundColor="Transparent" 
-                 Clicked="OnBackClicked" />
->>>>>>> 0832fb5f0367f7ff38136b808dee924e419fccbc
             </Frame>
 
             <!-- Pilule Centrale (Logo + Titre "Statistiques") -->
@@ -73,10 +49,6 @@
                         <Image Source="studytimerlogo.png" HeightRequest="16" WidthRequest="16" VerticalOptions="Center"/>
                         <Label Text="StudyTimer" FontSize="14" FontAttributes="Bold" TextColor="White" VerticalOptions="Center" />
                     </HorizontalStackLayout>
-<<<<<<< HEAD
-=======
-                    <!-- Changement du sous-titre ici -->
->>>>>>> 0832fb5f0367f7ff38136b808dee924e419fccbc
                     <Label Text="Statistiques" FontSize="10" TextColor="#A1A1AA" HorizontalOptions="Center" Margin="0,2,0,0"/>
                 </VerticalStackLayout>
             </Frame>
@@ -118,7 +90,6 @@
                     <!-- BLOC GRAPHIQUE (Temps total) -->
                     <Frame BackgroundColor="#121212" CornerRadius="16" HasShadow="False" Padding="20" BorderColor="Transparent">
                         <VerticalStackLayout Spacing="20">
-<<<<<<< HEAD
                             <!-- Titre du graphique (lié au ViewModel) -->
                             <VerticalStackLayout Spacing="2">
                                 <Label Text="{Binding TotalStudyTime}" FontSize="26" FontAttributes="Bold" TextColor="White" />
@@ -157,110 +128,12 @@
                                 </DataTemplate>
                             </CollectionView.ItemTemplate>
                         </CollectionView>
-=======
-                            <!-- Titre du graphique -->
-                            <VerticalStackLayout Spacing="2">
-                                <Label Text="12 h 45 min" FontSize="26" FontAttributes="Bold" TextColor="White" />
-                                <Label Text="Temps total cette semaine" FontSize="13" TextColor="#A1A1AA" />
-                            </VerticalStackLayout>
-
-                            <!-- Graphique en barres simulé avec BoxViews -->
-                            <Grid ColumnDefinitions="*,*,*,*,*,*,*" HeightRequest="120" ColumnSpacing="10" VerticalOptions="End">
-                                <!-- Lundi -->
-                                <VerticalStackLayout Grid.Column="0" VerticalOptions="End" Spacing="8">
-                                    <BoxView Color="#4ADE80" WidthRequest="22" HeightRequest="60" CornerRadius="4" HorizontalOptions="Center" />
-                                    <Label Text="L" FontSize="11" TextColor="#A1A1AA" HorizontalOptions="Center" />
-                                </VerticalStackLayout>
-                                <!-- Mardi -->
-                                <VerticalStackLayout Grid.Column="1" VerticalOptions="End" Spacing="8">
-                                    <BoxView Color="#4ADE80" WidthRequest="22" HeightRequest="30" CornerRadius="4" HorizontalOptions="Center" />
-                                    <Label Text="M" FontSize="11" TextColor="#A1A1AA" HorizontalOptions="Center" />
-                                </VerticalStackLayout>
-                                <!-- Mercredi -->
-                                <VerticalStackLayout Grid.Column="2" VerticalOptions="End" Spacing="8">
-                                    <BoxView Color="#4ADE80" WidthRequest="22" HeightRequest="85" CornerRadius="4" HorizontalOptions="Center" />
-                                    <Label Text="M" FontSize="11" TextColor="#A1A1AA" HorizontalOptions="Center" />
-                                </VerticalStackLayout>
-                                <!-- Jeudi -->
-                                <VerticalStackLayout Grid.Column="3" VerticalOptions="End" Spacing="8">
-                                    <BoxView Color="#4ADE80" WidthRequest="22" HeightRequest="45" CornerRadius="4" HorizontalOptions="Center" />
-                                    <Label Text="J" FontSize="11" TextColor="#A1A1AA" HorizontalOptions="Center" />
-                                </VerticalStackLayout>
-                                <!-- Vendredi -->
-                                <VerticalStackLayout Grid.Column="4" VerticalOptions="End" Spacing="8">
-                                    <BoxView Color="#4ADE80" WidthRequest="22" HeightRequest="100" CornerRadius="4" HorizontalOptions="Center" />
-                                    <Label Text="V" FontSize="11" TextColor="#A1A1AA" HorizontalOptions="Center" />
-                                </VerticalStackLayout>
-                                <!-- Samedi -->
-                                <VerticalStackLayout Grid.Column="5" VerticalOptions="End" Spacing="8">
-                                    <BoxView Color="#4ADE80" WidthRequest="22" HeightRequest="20" CornerRadius="4" HorizontalOptions="Center" />
-                                    <Label Text="S" FontSize="11" TextColor="#A1A1AA" HorizontalOptions="Center" />
-                                </VerticalStackLayout>
-                                <!-- Dimanche -->
-                                <VerticalStackLayout Grid.Column="6" VerticalOptions="End" Spacing="8">
-                                    <BoxView Color="#4ADE80" WidthRequest="22" HeightRequest="70" CornerRadius="4" HorizontalOptions="Center" />
-                                    <Label Text="D" FontSize="11" TextColor="#A1A1AA" HorizontalOptions="Center" />
-                                </VerticalStackLayout>
-                            </Grid>
-                        </VerticalStackLayout>
-                    </Frame>
-
-                    <!-- RÉPARTITION PAR MATIÈRE (Squelettes) -->
-                    <VerticalStackLayout Spacing="15">
-                        <HorizontalStackLayout Spacing="6" VerticalOptions="Center">
-                            <BoxView Color="#4ADE80" WidthRequest="6" HeightRequest="6" CornerRadius="3" VerticalOptions="Center" />
-                            <Label Text="RÉPARTITION PAR MATIÈRE" FontSize="10" FontAttributes="Bold" TextColor="#A1A1AA" CharacterSpacing="1" />
-                        </HorizontalStackLayout>
-
-                        <!-- Liste de placeholders (Identique à la maquette) -->
-                        <VerticalStackLayout Spacing="10">
-                            <!-- Skeleton 1 -->
-                            <Frame BackgroundColor="#121212" CornerRadius="12" Padding="15" HasShadow="False" BorderColor="Transparent">
-                                <Grid ColumnDefinitions="Auto, *, Auto" ColumnSpacing="15" VerticalOptions="Center">
-                                    <BoxView Grid.Column="0" Color="#27272A" WidthRequest="30" HeightRequest="30" CornerRadius="8" />
-                                    <VerticalStackLayout Grid.Column="1" Spacing="6" VerticalOptions="Center">
-                                        <BoxView Color="#27272A" HeightRequest="12" WidthRequest="120" CornerRadius="6" HorizontalOptions="Start" />
-                                        <BoxView Color="#27272A" HeightRequest="10" WidthRequest="80" CornerRadius="5" HorizontalOptions="Start" />
-                                    </VerticalStackLayout>
-                                    <BoxView Grid.Column="2" Color="#27272A" WidthRequest="40" HeightRequest="20" CornerRadius="10" VerticalOptions="Center" />
-                                </Grid>
-                            </Frame>
-
-                            <!-- Skeleton 2 -->
-                            <Frame BackgroundColor="#121212" CornerRadius="12" Padding="15" HasShadow="False" BorderColor="Transparent">
-                                <Grid ColumnDefinitions="Auto, *, Auto" ColumnSpacing="15" VerticalOptions="Center">
-                                    <BoxView Grid.Column="0" Color="#27272A" WidthRequest="30" HeightRequest="30" CornerRadius="8" />
-                                    <VerticalStackLayout Grid.Column="1" Spacing="6" VerticalOptions="Center">
-                                        <BoxView Color="#27272A" HeightRequest="12" WidthRequest="140" CornerRadius="6" HorizontalOptions="Start" />
-                                        <BoxView Color="#27272A" HeightRequest="10" WidthRequest="90" CornerRadius="5" HorizontalOptions="Start" />
-                                    </VerticalStackLayout>
-                                    <BoxView Grid.Column="2" Color="#27272A" WidthRequest="40" HeightRequest="20" CornerRadius="10" VerticalOptions="Center" />
-                                </Grid>
-                            </Frame>
-
-                            <!-- Skeleton 3 -->
-                            <Frame BackgroundColor="#121212" CornerRadius="12" Padding="15" HasShadow="False" BorderColor="Transparent">
-                                <Grid ColumnDefinitions="Auto, *, Auto" ColumnSpacing="15" VerticalOptions="Center">
-                                    <BoxView Grid.Column="0" Color="#27272A" WidthRequest="30" HeightRequest="30" CornerRadius="8" />
-                                    <VerticalStackLayout Grid.Column="1" Spacing="6" VerticalOptions="Center">
-                                        <BoxView Color="#27272A" HeightRequest="12" WidthRequest="110" CornerRadius="6" HorizontalOptions="Start" />
-                                        <BoxView Color="#27272A" HeightRequest="10" WidthRequest="70" CornerRadius="5" HorizontalOptions="Start" />
-                                    </VerticalStackLayout>
-                                    <BoxView Grid.Column="2" Color="#27272A" WidthRequest="40" HeightRequest="20" CornerRadius="10" VerticalOptions="Center" />
-                                </Grid>
-                            </Frame>
-                        </VerticalStackLayout>
->>>>>>> 0832fb5f0367f7ff38136b808dee924e419fccbc
                     </VerticalStackLayout>
 
                 </VerticalStackLayout>
             </ScrollView>
 
-<<<<<<< HEAD
             <!-- Barre de navigation flottante -->
-=======
-            <!-- L'onglet actif est maintenant "Statistiques" (Vert) -->
->>>>>>> 0832fb5f0367f7ff38136b808dee924e419fccbc
             <Frame VerticalOptions="End"
                    BackgroundColor="#27272A"
                    CornerRadius="35"
@@ -269,31 +142,19 @@
                    Padding="15, 6"
                    BorderColor="Transparent">
                 <Grid ColumnDefinitions="*, *, *">
-<<<<<<< HEAD
                     <!-- Accueil -->
-=======
-                    <!-- Accueil (Inactif -> Gris) -->
->>>>>>> 0832fb5f0367f7ff38136b808dee924e419fccbc
                     <VerticalStackLayout Grid.Column="0" HorizontalOptions="Center" Spacing="2">
                         <ImageButton Source="timer.svg" HeightRequest="12" WidthRequest="12" Padding="0" BackgroundColor="Transparent" Clicked="OnNavigateHome" />
                         <Label Text="Accueil" FontSize="11" TextColor="#A1A1AA" HorizontalOptions="Center" />
                     </VerticalStackLayout>
 
-<<<<<<< HEAD
                     <!-- Statistiques (Actif) -->
-=======
-                    <!-- Statistiques (Actif -> Vert) -->
->>>>>>> 0832fb5f0367f7ff38136b808dee924e419fccbc
                     <VerticalStackLayout Grid.Column="1" HorizontalOptions="Center" Spacing="2">
                         <ImageButton Source="statistics_active.svg" HeightRequest="12" WidthRequest="12" Padding="0" BackgroundColor="Transparent" />
                         <Label Text="Statistiques" FontSize="11" TextColor="#4ADE80" HorizontalOptions="Center" />
                     </VerticalStackLayout>
 
-<<<<<<< HEAD
                     <!-- Paramètres -->
-=======
-                    <!-- Paramètres (Inactif -> Gris) -->
->>>>>>> 0832fb5f0367f7ff38136b808dee924e419fccbc
                     <VerticalStackLayout Grid.Column="2" HorizontalOptions="Center" Spacing="2">
                         <ImageButton Source="settings.svg" HeightRequest="12" WidthRequest="12" Padding="0" BackgroundColor="Transparent" Clicked="OnNavigateSettings" />
                         <Label Text="Paramètres" FontSize="11" TextColor="#A1A1AA" HorizontalOptions="Center" />
@@ -303,8 +164,4 @@
 
         </Grid>
     </Grid>
-<<<<<<< HEAD
 </ContentPage>
-=======
-</ContentPage>
->>>>>>> 0832fb5f0367f7ff38136b808dee924e419fccbc

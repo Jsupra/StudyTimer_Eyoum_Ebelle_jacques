@@ -1,26 +1,16 @@
 using System.Windows.Input;
-<<<<<<< HEAD
 using StudyTimer.Models;
 using StudyTimer.Services;
-=======
->>>>>>> 0832fb5f0367f7ff38136b808dee924e419fccbc
 
 namespace StudyTimer.ViewModels;
 
 public class TimerViewModel : BaseViewModel
 {
-<<<<<<< HEAD
     private TimeSpan _remainingTime = TimeSpan.FromMinutes(25); // Session Pomodoro par défaut : 25 min
     private string _timerDisplay = "25:00";
     private bool _isRunning;
     private IDispatcherTimer? _timer;
     private readonly DatabaseService _databaseService;
-=======
-    private TimeSpan _remainingTime = TimeSpan.FromMinutes(25); // Session Pomodoro par d�faut : 25 min
-    private string _timerDisplay = "25:00";
-    private bool _isRunning;
-    private IDispatcherTimer? _timer;
->>>>>>> 0832fb5f0367f7ff38136b808dee924e419fccbc
 
     public string TimerDisplay
     {
@@ -39,11 +29,8 @@ public class TimerViewModel : BaseViewModel
 
     public TimerViewModel()
     {
-<<<<<<< HEAD
         _databaseService = new DatabaseService();
 
-=======
->>>>>>> 0832fb5f0367f7ff38136b808dee924e419fccbc
         // Initialisation du Timer natif .NET MAUI
         _timer = Application.Current?.Dispatcher.CreateTimer();
         if (_timer != null)
@@ -70,11 +57,7 @@ public class TimerViewModel : BaseViewModel
         }
     }
 
-<<<<<<< HEAD
     private async void OnTimerTick(object? sender, EventArgs e)
-=======
-    private void OnTimerTick(object? sender, EventArgs e)
->>>>>>> 0832fb5f0367f7ff38136b808dee924e419fccbc
     {
         if (_remainingTime.TotalSeconds > 0)
         {
@@ -85,7 +68,6 @@ public class TimerViewModel : BaseViewModel
         {
             _timer?.Stop();
             IsRunning = false;
-<<<<<<< HEAD
 
             // Enregistrer la session terminée en base de données
             if (AppSession.CurrentUser != null)
@@ -119,9 +101,6 @@ public class TimerViewModel : BaseViewModel
                 await Application.Current?.MainPage?.DisplayAlert("Session Terminée !", "Votre session de révision a été enregistrée avec succès.", "OK")!;
                 await Shell.Current.GoToAsync("//HomePage");
             });
-=======
-            // TODO: D�clencher une alerte ou enregistrer la session termin�e
->>>>>>> 0832fb5f0367f7ff38136b808dee924e419fccbc
         }
     }
 
@@ -132,8 +111,4 @@ public class TimerViewModel : BaseViewModel
         _remainingTime = TimeSpan.FromMinutes(25);
         TimerDisplay = "25:00";
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 0832fb5f0367f7ff38136b808dee924e419fccbc

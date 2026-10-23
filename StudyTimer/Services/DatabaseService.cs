@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 using SQLite;
 using StudyTimer.Models;
 
@@ -160,21 +159,3 @@ namespace StudyTimer.Services
         }
     }
 }
-=======
-namespace StudyTimer.Services
-{
-    public class DatabaseService : ContentPage
-    {
-        public DatabaseService()
-        {
-            Content = new VerticalStackLayout
-            {
-                Children = {
-                    new Label { HorizontalOptions = LayoutOptions.Center, VerticalOptions = LayoutOptions.Center, Text = "Welcome to .NET MAUI!"
-                    }
-                }
-            };
-        }
-    }
-}
->>>>>>> 0832fb5f0367f7ff38136b808dee924e419fccbc

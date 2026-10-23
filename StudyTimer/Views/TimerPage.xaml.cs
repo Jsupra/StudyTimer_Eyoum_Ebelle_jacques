@@ -10,22 +10,16 @@ public partial class TimerPage : ContentPage
 {
     private IDispatcherTimer _timer;
     private TimeSpan _timeLeft;
-    private TimeSpan _initialDuration; // Mémorise la durée pour réinitialiser le chrono au cycle suivant
+    private TimeSpan _initialDuration; // MÃ©morise la durÃ©e pour rÃ©initialiser le chrono au cycle suivant
     private bool _isRunning;
 
     private int _currentCycle = 1;
     private int _totalCycles = 1;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
     private bool _isBreakMode = false;
     private TimeSpan _breakDuration = TimeSpan.FromMinutes(5); 
 
-=======
->>>>>>> 0832fb5f0367f7ff38136b808dee924e419fccbc
-=======
->>>>>>> 0832fb5f0367f7ff38136b808dee924e419fccbc
-    // --- PROPRIÉTÉS ALIMENTÉES PAR LA NAVIGATION ---
+    // --- PROPRIÃ‰TÃ‰S ALIMENTÃ‰ES PAR LA NAVIGATION ---
 
     public string Duration
     {
@@ -37,8 +31,6 @@ public partial class TimerPage : ContentPage
                 _timeLeft = _initialDuration;
                 UpdateTimerDisplay();
             }
-<<<<<<< HEAD
-<<<<<<< HEAD
         }
     }
 
@@ -46,7 +38,7 @@ public partial class TimerPage : ContentPage
     {
         set
         {
-            // Décode le texte (qui a été formaté pour l'URL) et l'affiche en majuscules
+            // DÃ©code le texte (qui a Ã©tÃ© formatÃ© pour l'URL) et l'affiche en majuscules
             if (SubjectLabel != null)
             {
                 SubjectLabel.Text = Uri.UnescapeDataString(value).ToUpper();
@@ -72,7 +64,6 @@ public partial class TimerPage : ContentPage
     public TimerPage()
     {
         InitializeComponent();
-
     }
 
     // --- CYCLE DE VIE DE LA PAGE ---
@@ -81,7 +72,6 @@ public partial class TimerPage : ContentPage
     {
         base.OnAppearing();
 
-        
         if (_timer == null)
         {
             _timer = Application.Current.Dispatcher.CreateTimer();
@@ -98,7 +88,7 @@ public partial class TimerPage : ContentPage
         PauseTimer(); 
     }
 
-    // --- LOGIQUE DU CHRONOMÈTRE ---
+    // --- LOGIQUE DU CHRONOMÃˆTRE ---
 
     private async void OnTimerTick(object sender, EventArgs e)
     {
@@ -116,7 +106,7 @@ public partial class TimerPage : ContentPage
                 // === FIN D'UNE SESSION DE FOCUS ===
                 if (_currentCycle < _totalCycles)
                 {
-                    await DisplayAlert("Focus terminé !", "Excellent travail. Prenez 5 minutes de pause pour souffler.", "Lancer la pause");
+                    await DisplayAlert("Focus terminÃ© !", "Excellent travail. Prenez 5 minutes de pause pour souffler.", "Lancer la pause");
 
                     _isBreakMode = true; 
                     _timeLeft = _breakDuration;
@@ -128,9 +118,9 @@ public partial class TimerPage : ContentPage
                 }
                 else
                 {
-                    // La session entière est terminée
+                    // La session entiÃ¨re est terminÃ©e
                     int totalMinutes = (int)_initialDuration.TotalMinutes * _totalCycles;
-                    string encodedSubject = Uri.EscapeDataString(SubjectLabel.Text ?? "Étude");
+                    string encodedSubject = Uri.EscapeDataString(SubjectLabel.Text ?? "Ã‰tude");
 
                     await Shell.Current.GoToAsync($"SessionSummaryPage?subject={encodedSubject}&minutes={totalMinutes}&cycles={_totalCycles}");
                 }
@@ -138,7 +128,7 @@ public partial class TimerPage : ContentPage
             else
             {
                 // === FIN D'UNE SESSION DE PAUSE ===
-                await DisplayAlert("Pause terminée", "Fin de la récréation ! Concentrez-vous pour le cycle suivant.", "C'est parti !");
+                await DisplayAlert("Pause terminÃ©e", "Fin de la rÃ©crÃ©ation ! Concentrez-vous pour le cycle suivant.", "C'est parti !");
 
                 _isBreakMode = false; 
                 _currentCycle++;      
@@ -167,8 +157,7 @@ public partial class TimerPage : ContentPage
         if (CycleLabel != null)
         {
             string modeText = _isBreakMode ? "MODE PAUSE" : "MODE FOCUS";
-            CycleLabel.Text = $"• CYCLE {_currentCycle}/{_totalCycles}  • {modeText}";
-
+            CycleLabel.Text = $"â€¢ CYCLE {_currentCycle}/{_totalCycles}  â€¢ {modeText}";
 
             CycleLabel.TextColor = _isBreakMode ? Color.FromArgb("#FBBF24") : Color.FromArgb("#38BDF8");
         }
@@ -218,7 +207,7 @@ public partial class TimerPage : ContentPage
     {
         PauseTimer();
 
-        bool confirm = await DisplayAlert("Arrêter", "Voulez-vous vraiment arrêter cette session ? Sa progression sera perdue.", "Oui, arrêter", "Annuler");
+        bool confirm = await DisplayAlert("ArrÃªter", "Voulez-vous vraiment arrÃªter cette session ? Sa progression sera perdue.", "Oui, arrÃªter", "Annuler");
 
         if (confirm)
         {
@@ -234,7 +223,7 @@ public partial class TimerPage : ContentPage
     {
         PauseTimer();
 
-        bool confirm = await DisplayAlert("Quitter", "Quitter la session en cours ? Toute progression non sauvegardée sera perdue.", "Oui", "Non");
+        bool confirm = await DisplayAlert("Quitter", "Quitter la session en cours ? Toute progression non sauvegardÃ©e sera perdue.", "Oui", "Non");
 
         if (confirm)
         {
@@ -246,14 +235,14 @@ public partial class TimerPage : ContentPage
         }
     }
 
-    // Capture le bouton retour physique d'Android pour éviter une fermeture accidentelle
+    // Capture le bouton retour physique d'Android pour Ã©viter une fermeture accidentelle
     protected override bool OnBackButtonPressed()
     {
         PauseTimer();
 
         MainThread.BeginInvokeOnMainThread(async () =>
         {
-            bool confirm = await DisplayAlert("Quitter", "Quitter la session en cours ? Toute progression non sauvegardée sera perdue.", "Oui", "Non");
+            bool confirm = await DisplayAlert("Quitter", "Quitter la session en cours ? Toute progression non sauvegardÃ©e sera perdue.", "Oui", "Non");
 
             if (confirm)
             {
@@ -267,12 +256,13 @@ public partial class TimerPage : ContentPage
 
         return true;
     }
+
     private void UpdateDotsUI()
     {
         if (DotsContainer == null) return;
         DotsContainer.Children.Clear();
 
-        // On crée autant de points que de cycles totaux
+        // On crÃ©e autant de points que de cycles totaux
         for (int i = 1; i <= _totalCycles; i++)
         {
             var dot = new BoxView
@@ -280,216 +270,11 @@ public partial class TimerPage : ContentPage
                 WidthRequest = 6,
                 HeightRequest = 6,
                 CornerRadius = 3,
-                // Si le point correspond au cycle en cours ou à un cycle passé -> Vert. Sinon -> Gris
+                // Si le point correspond au cycle en cours ou Ã  un cycle passÃ© -> Vert. Sinon -> Gris
                 Color = (i <= _currentCycle) ? Color.FromArgb("#4ADE80") : Color.FromArgb("#27272A")
             };
 
             DotsContainer.Children.Add(dot);
-=======
->>>>>>> 0832fb5f0367f7ff38136b808dee924e419fccbc
-=======
->>>>>>> 0832fb5f0367f7ff38136b808dee924e419fccbc
         }
-    }
-
-    public string Subject
-    {
-        set
-        {
-            // Décode le texte (qui a été formaté pour l'URL) et l'affiche en majuscules
-            if (SubjectLabel != null)
-            {
-                SubjectLabel.Text = Uri.UnescapeDataString(value).ToUpper();
-            }
-        }
-    }
-
-    public string TotalCycles
-    {
-        set
-        {
-            if (int.TryParse(value, out int cycles))
-            {
-                _totalCycles = cycles;
-                UpdateCycleLabel();
-            }
-        }
-    }
-
-    // --- CONSTRUCTEUR ---
-
-    public TimerPage()
-    {
-        InitializeComponent();
-
-    }
-
-    // --- CYCLE DE VIE DE LA PAGE ---
-
-    protected override void OnAppearing()
-    {
-        base.OnAppearing();
-
-        
-        if (_timer == null)
-        {
-            _timer = Application.Current.Dispatcher.CreateTimer();
-            _timer.Interval = TimeSpan.FromSeconds(1);
-            _timer.Tick += OnTimerTick;
-        }
-
-        StartTimer();
-    }
-
-    protected override void OnDisappearing()
-    {
-        base.OnDisappearing();
-        PauseTimer(); 
-    }
-
-    // --- LOGIQUE DU CHRONOMÈTRE ---
-
-    private async void OnTimerTick(object sender, EventArgs e)
-    {
-        if (_timeLeft.TotalSeconds > 0)
-        {
-            _timeLeft = _timeLeft.Add(TimeSpan.FromSeconds(-1));
-            UpdateTimerDisplay();
-        }
-        else
-        {
-            PauseTimer(); // Le temps est écoulé pour ce cycle
-
-            if (_currentCycle < _totalCycles)
-            {
-                await DisplayAlert("Cycle terminé !", "Prenez une petite pause, puis préparez-vous pour le cycle suivant.", "C'est parti !");
-
-                _currentCycle++;
-                UpdateCycleLabel();
-
-                // On remet le compteur à sa valeur initiale pour le nouveau cycle
-                _timeLeft = _initialDuration;
-                UpdateTimerDisplay();
-
-                StartTimer();
-            }
-            else
-            {
-                await DisplayAlert("Session terminée", "Félicitations, vous avez terminé tous vos cycles de révision !", "Super");
-
-                // Retour au tableau de bord
-                await Shell.Current.GoToAsync("..");
-            }
-        }
-    }
-
-    private void UpdateTimerDisplay()
-    {
-        if (TimeLabel != null)
-        {
-            TimeLabel.Text = _timeLeft.ToString(@"mm\:ss");
-        }
-    }
-
-    private void UpdateCycleLabel()
-    {
-        if (CycleLabel != null)
-        {
-            CycleLabel.Text = $"• CYCLE {_currentCycle}/{_totalCycles}  • MODE FOCUS";
-        }
-    }
-
-    private void StartTimer()
-    {
-        _timer.Start();
-        _isRunning = true;
-
-        if (PauseResumeButton != null)
-        {
-            PauseResumeButton.Text = "METTRE EN PAUSE";
-            PauseResumeButton.BackgroundColor = Color.FromArgb("#4ADE80"); // Vert
-            PauseResumeButton.TextColor = Colors.Black;
-        }
-    }
-
-    private void PauseTimer()
-    {
-        _timer.Stop();
-        _isRunning = false;
-
-        if (PauseResumeButton != null)
-        {
-            PauseResumeButton.Text = "REPRENDRE";
-            PauseResumeButton.BackgroundColor = Color.FromArgb("#38BDF8"); // Bleu clair
-            PauseResumeButton.TextColor = Colors.Black;
-        }
-    }
-
-    // --- GESTION DES CLICS SUR LES BOUTONS ---
-
-    private void OnPauseResumeClicked(object sender, EventArgs e)
-    {
-        if (_isRunning)
-        {
-            PauseTimer();
-        }
-        else
-        {
-            StartTimer();
-        }
-    }
-
-    private async void OnStopClicked(object sender, EventArgs e)
-    {
-        PauseTimer();
-
-        bool confirm = await DisplayAlert("Arrêter", "Voulez-vous vraiment arrêter cette session ? Sa progression sera perdue.", "Oui, arrêter", "Annuler");
-
-        if (confirm)
-        {
-            await Shell.Current.GoToAsync("..");
-        }
-        else
-        {
-            StartTimer();
-        }
-    }
-
-    private async void OnBackClicked(object sender, EventArgs e)
-    {
-        PauseTimer();
-
-        bool confirm = await DisplayAlert("Quitter", "Quitter la session en cours ? Toute progression non sauvegardée sera perdue.", "Oui", "Non");
-
-        if (confirm)
-        {
-            await Shell.Current.GoToAsync("..");
-        }
-        else
-        {
-            StartTimer();
-        }
-    }
-
-    // Capture le bouton retour physique d'Android pour éviter une fermeture accidentelle
-    protected override bool OnBackButtonPressed()
-    {
-        PauseTimer();
-
-        MainThread.BeginInvokeOnMainThread(async () =>
-        {
-            bool confirm = await DisplayAlert("Quitter", "Quitter la session en cours ? Toute progression non sauvegardée sera perdue.", "Oui", "Non");
-
-            if (confirm)
-            {
-                await Shell.Current.GoToAsync("..");
-            }
-            else
-            {
-                StartTimer();
-            }
-        });
-
-        return true;
     }
 }

@@ -80,24 +80,8 @@
                     </VerticalStackLayout>
                 </Border>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
                 <!-- Indicateurs de progression dynamiques -->
                 <HorizontalStackLayout x:Name="DotsContainer" Spacing="8" HorizontalOptions="Center">
-                    
-=======
-=======
->>>>>>> 0832fb5f0367f7ff38136b808dee924e419fccbc
-                <!-- Indicateurs de progression (Points) -->
-                <HorizontalStackLayout Spacing="8" HorizontalOptions="Center">
-                    <BoxView Color="#4ADE80" WidthRequest="6" HeightRequest="6" CornerRadius="3" />
-                    <BoxView Color="#27272A" WidthRequest="6" HeightRequest="6" CornerRadius="3" />
-                    <BoxView Color="#27272A" WidthRequest="6" HeightRequest="6" CornerRadius="3" />
-                    <BoxView Color="#27272A" WidthRequest="6" HeightRequest="6" CornerRadius="3" />
-<<<<<<< HEAD
->>>>>>> 0832fb5f0367f7ff38136b808dee924e419fccbc
-=======
->>>>>>> 0832fb5f0367f7ff38136b808dee924e419fccbc
                 </HorizontalStackLayout>
 
                 <!-- Boutons d'action -->
