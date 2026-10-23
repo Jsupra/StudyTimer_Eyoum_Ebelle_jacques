@@ -16,29 +16,15 @@ public partial class LoginPage : ContentPage
         PasswordEntry.Text = "Password123!";
     }
 
+    // Le bouton vert "Se connecter"
     private async void OnLoginClicked(object sender, EventArgs e)
     {
-        var email = EmailEntry.Text?.Trim();
-        var password = PasswordEntry.Text;
-
-        if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
-        {
-            await DisplayAlert("Erreur", "Veuillez remplir tous les champs.", "OK");
-            return;
-        }
-
-        try
-        {
-            var user = await _databaseService.LoginAsync(email, password);
-            if (user != null)
-            {
-                AppSession.CurrentUser = user;
-                await Shell.Current.GoToAsync("//HomePage");
-            }
+        await Shell.Current.GoToAsync("//HomePage");
+    }
             else
             {
                 await DisplayAlert("Échec de connexion", "Email ou mot de passe incorrect. (Utilisez test@studytimer.com / Password123!)", "OK");
-            }
+}
         }
         catch (Exception ex)
         {
@@ -46,11 +32,14 @@ public partial class LoginPage : ContentPage
         }
     }
 
+    // Le lien texte "Cr�er un compte" en bas
     private async void OnRegisterClicked(object sender, EventArgs e)
     {
+        // Navigation empil�e vers l'inscription (permet le bouton retour)
         await Shell.Current.GoToAsync("RegisterPage");
     }
 
+    // Le lien "Mot de passe oubli�"
     private void OnForgotPasswordClicked(object sender, EventArgs e)
     {
         DisplayAlert("Mot de passe oublié", "Pour le compte de test, utilisez l'email : test@studytimer.com et le mot de passe : Password123!", "OK");
