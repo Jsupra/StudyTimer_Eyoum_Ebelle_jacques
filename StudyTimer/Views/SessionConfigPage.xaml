@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StudyTimer.Views.SessionConfigPage"
+             BackgroundColor="#000000"
+             Shell.NavBarIsVisible="False">
+
+    <Grid RowDefinitions="Auto, *">
+
+        <!-- ======================================= -->
+        <!-- 1. EN-TÊTE FIXE                         -->
+        <!-- ======================================= -->
+        <Grid Grid.Row="0" ColumnDefinitions="Auto, *, Auto" Padding="20, 50, 20, 10">
+            <!-- Bouton Retour -->
+            <Frame Grid.Column="0" BackgroundColor="#121212" CornerRadius="16" HeightRequest="32" WidthRequest="32" Padding="0" HasShadow="False">
+                <ImageButton Source="back_icon.png" HeightRequest="14" WidthRequest="14" BackgroundColor="Transparent" Clicked="OnBackClicked" />
+            </Frame>
+            <Label Grid.Column="1" Text="Configuration" FontSize="16" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" />
+        </Grid>
+
+        <!-- ======================================= -->
+        <!-- 2. FORMULAIRE DE CONFIGURATION          -->
+        <!-- ======================================= -->
+        <ScrollView Grid.Row="1" Padding="25, 20, 25, 40">
+            <VerticalStackLayout Spacing="25">
+
+                <!-- Matière à réviser -->
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Matière à réviser" FontSize="14" FontAttributes="Bold" TextColor="White" />
+                    <Frame BackgroundColor="#121212" CornerRadius="12" Padding="15,5" HasShadow="False" BorderColor="Transparent">
+                        <Entry x:Name="SubjectEntry" 
+                               Placeholder="Ex: Algorithmique Avancée" 
+                               TextColor="White" 
+                               PlaceholderColor="#A1A1AA" 
+                               ClearButtonVisibility="WhileEditing" />
+                    </Frame>
+                </VerticalStackLayout>
+
+                <!-- Durée personnalisée (Visible uniquement si "Libre" est sélectionné) -->
+                <VerticalStackLayout x:Name="CustomTimeContainer" Spacing="10" IsVisible="False">
+                    <Label Text="Durée de la session (minutes)" FontSize="14" FontAttributes="Bold" TextColor="White" />
+                    <Frame BackgroundColor="#121212" CornerRadius="12" Padding="15,5" HasShadow="False" BorderColor="Transparent">
+                        <Entry x:Name="CustomTimeEntry" 
+                               Placeholder="Ex: 60" 
+                               Keyboard="Numeric" 
+                               TextColor="White" 
+                               PlaceholderColor="#A1A1AA" />
+                    </Frame>
+                </VerticalStackLayout>
+
+                <!-- Nombre de cycles -->
+                <VerticalStackLayout Spacing="10">
+                    <Grid ColumnDefinitions="*, Auto">
+                        <Label Text="Nombre de cycles" FontSize="14" FontAttributes="Bold" TextColor="White" VerticalOptions="Center" />
+                        <Label x:Name="CyclesLabel" Grid.Column="1" Text="1 cycle" FontSize="14" FontAttributes="Bold" TextColor="#4ADE80" VerticalOptions="Center" />
+                    </Grid>
+                    <Frame BackgroundColor="#121212" CornerRadius="12" Padding="15,10" HasShadow="False" BorderColor="Transparent">
+                        <Stepper x:Name="CyclesStepper" 
+                                 Minimum="1" 
+                                 Maximum="8" 
+                                 Value="1" 
+                                 Increment="1" 
+                                 ValueChanged="OnCyclesChanged" 
+                                 BackgroundColor="Transparent" />
+                    </Frame>
+                    <Label Text="Un cycle correspond à une session de focus suivie d'une pause." FontSize="12" TextColor="#A1A1AA" />
+                </VerticalStackLayout>
+
+                <!-- Bouton Démarrer -->
+                <Button Text="Démarrer la session" 
+                        TextColor="Black" 
+                        BackgroundColor="#4ADE80" 
+                        FontAttributes="Bold" 
+                        HeightRequest="50" 
+                        CornerRadius="25" 
+                        Margin="0,30,0,0" 
+                        Clicked="OnStartTimerClicked" />
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

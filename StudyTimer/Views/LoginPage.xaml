@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StudyTimer.Views.LoginPage"
+             BackgroundColor="#000000"
+             Shell.NavBarIsVisible="False">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30" 
+                     Spacing="25" 
+                     VerticalOptions="Center" 
+                     HorizontalOptions="Fill">
+
+            <!-- Titre de l'application -->
+            <Image Source="studytimerlogo.png" 
+           HeightRequest="100" 
+           WidthRequest="100" 
+           HorizontalOptions="Center" />
+            <Label Text="StudyTimer" 
+           FontSize="36" 
+           FontAttributes="Bold" 
+           TextColor="White" 
+           HorizontalOptions="Center" />
+
+            <Label Text="Connectez-vous pour reprendre vos sessions de révision" 
+           FontSize="14" 
+           TextColor="#A0A0A0" 
+           HorizontalOptions="Center" 
+           Margin="0,0,0,20"/>
+
+            <!-- Champ Email -->
+            <Label Text="Email" 
+           FontSize="14" 
+           TextColor="#A0A0A0" 
+           HorizontalTextAlignment="Start"/>
+            <Entry Placeholder="exemple@gmail.com" 
+           PlaceholderColor="#666666"
+           TextColor="White"
+           BackgroundColor="#121212"
+           HeightRequest="50"
+           ClearButtonVisibility="WhileEditing" />
+
+            <!-- Champ Mot de passe -->
+            <Label Text="Mot de passe" 
+           FontSize="14" 
+           TextColor="#A0A0A0" 
+           HorizontalTextAlignment="Start"/>
+            <Entry Placeholder="Mot de passe robuste" 
+           PlaceholderColor="#666666"
+           TextColor="White"
+           BackgroundColor="#121212"
+           HeightRequest="50"
+           IsPassword="True" />
+
+            <!-- Lien mot de passe oublie -->
+            <Button Text="Mot de passe oublié ?" 
+            TextColor="#A0A0A0" 
+            BackgroundColor="Transparent" 
+            FontSize="13"
+            HorizontalOptions="End"
+            Clicked="OnForgotPasswordClicked"/>
+
+            <!-- Bouton de connexion -->
+            <Button Text="Se connecter" 
+            TextColor="Black" 
+            BackgroundColor="#00FF66" 
+            FontAttributes="Bold"
+            HeightRequest="50"
+            CornerRadius="12"
+            Margin="0,15,0,0"
+            Clicked="OnLoginClicked" />
+
+            <!-- Lien vers l'inscription -->
+            <Button Text="Creer un compte" 
+            TextColor="#4ADE80" 
+            BackgroundColor="Transparent" 
+            FontSize="13"
+            Clicked="OnRegisterClicked" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+    
+</ContentPage>

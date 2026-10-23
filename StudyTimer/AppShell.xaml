@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="StudyTimer.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:StudyTimer.Views"
+    BackgroundColor="#000000"
+    Shell.NavBarIsVisible="False">
+
+    <!-- 1. La page de connexion en PREMIER (C'est elle qui s'ouvrira au lancement) -->
+    <ShellContent
+        Route="LoginPage"
+        ContentTemplate="{DataTemplate views:LoginPage}" 
+        Shell.TabBarIsVisible="False" />
+
+    <!-- 2. La page d'accueil -->
+    <ShellContent
+        Route="HomePage"
+        ContentTemplate="{DataTemplate views:HomePage}" 
+        Shell.TabBarIsVisible="False" />
+
+    <!-- 3. Statistiques -->
+    <ShellContent
+        Route="StatsPage"
+        ContentTemplate="{DataTemplate views:StatsPage}" 
+        Shell.TabBarIsVisible="False" />
+
+    <!-- 4. Paramètres -->
+    <ShellContent
+        Route="SettingsPage"
+        ContentTemplate="{DataTemplate views:SettingsPage}" 
+        Shell.TabBarIsVisible="False" />
+
+</Shell>

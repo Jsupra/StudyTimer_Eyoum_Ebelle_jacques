@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:StudyTimer.ViewModels"
+             x:Class="StudyTimer.Views.HomePage"
+             BackgroundColor="#000000"
+             Shell.NavBarIsVisible="False">
+
+    <ContentPage.BindingContext>
+        <viewmodels:HomeViewModel />
+    </ContentPage.BindingContext>
+
+    <!-- LA CORRECTION EST ICI : On sépare l'écran en deux (En-tête et Reste) -->
+    <Grid RowDefinitions="Auto, *">
+
+        <!-- ======================================= -->
+        <!-- 1. EN-TÊTE FIXE (Ligne 0)               -->
+        <!-- ======================================= -->
+        <Grid Grid.Row="0" 
+              ColumnDefinitions="*, Auto, *" 
+              Padding="20, 15, 20, 10" 
+              BackgroundColor="Transparent"
+              ZIndex="1">
+
+            <!-- Pilule Centrale (Logo + Titre) -->
+            <Frame Grid.Column="1" 
+                   BackgroundColor="#121212" 
+                   CornerRadius="20" 
+                   Padding="20,8" 
+                   HasShadow="False" 
+                   HorizontalOptions="Center" 
+                   VerticalOptions="Center"
+                   BorderColor="Transparent">
+                <VerticalStackLayout Spacing="0" HorizontalOptions="Center">
+                    <HorizontalStackLayout Spacing="6" HorizontalOptions="Center">
+                        <Image Source="studytimerlogo.png" HeightRequest="16" WidthRequest="16" VerticalOptions="Center"/>
+                        <Label Text="StudyTimer" FontSize="14" FontAttributes="Bold" TextColor="White" VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+                    <Label Text="Tableau de bord" FontSize="10" TextColor="#A1A1AA" HorizontalOptions="Center" Margin="0,2,0,0"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Avatar Utilisateur (Cercle) -->
+            <Frame Grid.Column="2" 
+                   BackgroundColor="#121212" 
+                   CornerRadius="20" 
+                   HeightRequest="40" 
+                   WidthRequest="40" 
+                   Padding="0" 
+                   HasShadow="False" 
+                   HorizontalOptions="End" 
+                   VerticalOptions="Center">
+                <Image Source="avatar_placeholder.png" 
+                       HeightRequest="24" 
+                       WidthRequest="24" 
+                       HorizontalOptions="Center" 
+                       VerticalOptions="Center" />
+            </Frame>
+        </Grid>
+
+        <!-- ======================================= -->
+        <!-- 2. CONTENU + BARRE FLOTTANTE (Ligne 1)  -->
+        <!-- ======================================= -->
+        <Grid Grid.Row="1">
+
+            <!-- LE CONTENU QUI DÉFILE -->
+            <ScrollView Padding="20, 15, 20, 110">
+                <VerticalStackLayout Spacing="25">
+
+                    <!-- Textes de bienvenue -->
+                    <VerticalStackLayout Spacing="4">
+                        <Label Text="Bonjour, Étudiant 👋" FontSize="15" TextColor="#A1A1AA" />
+                        <Label Text="Tableau de bord" FontSize="26" FontAttributes="Bold" TextColor="White" />
+                    </VerticalStackLayout>
+
+                    <!-- Bloc Objectif Quotidien -->
+                    <Frame BackgroundColor="#121212" 
+                           CornerRadius="16" 
+                           HasShadow="False" 
+                           Padding="20" 
+                           BorderColor="Transparent">
+                        <VerticalStackLayout Spacing="14">
+                            <Grid ColumnDefinitions="*, Auto">
+                                <Label Text="Objectif Quotidien" FontSize="15" TextColor="#A1A1AA" VerticalOptions="Center" />
+                                <Label Grid.Column="1" Text="0%" FontSize="15" FontAttributes="Bold" TextColor="#A1A1AA" VerticalOptions="Center" />
+                            </Grid>
+
+                            <Label Text="0h / 4h00" FontSize="32" FontAttributes="Bold" TextColor="#4ADE80" />
+
+                            <ProgressBar Progress="0.0" 
+                                         ProgressColor="#4ADE80" 
+                                         BackgroundColor="#27272A" 
+                                         HeightRequest="6" />
+                        </VerticalStackLayout>
+                    </Frame>
+
+                    <!-- Illustration Centrale -->
+                    <VerticalStackLayout Spacing="15" HorizontalOptions="Center" Margin="0,20,0,20">
+                        <Image Source="empty_state_book.png" HeightRequest="90" WidthRequest="90" Opacity="0.5" HorizontalOptions="Center"/>
+                        <Label Text="Aucune révision aujourd'hui" FontSize="17" TextColor="#FFFFFF" FontAttributes="Bold" HorizontalOptions="Center" />
+                        <Label Text="Lancez votre première session d'étude pour activer vos métriques et construire votre série." FontSize="13" TextColor="#A1A1AA" HorizontalTextAlignment="Center" LineBreakMode="WordWrap" MaximumWidthRequest="300" HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+
+                    <!-- Sélecteurs de type de session -->
+                    <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
+
+                        <!-- Carte 1 : 25 min (Sélectionnée par défaut) -->
+                        <Border x:Name="Card25" BackgroundColor="#27272A" Stroke="#4ADE80" StrokeThickness="2" Padding="15,10">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="12" />
+                            </Border.StrokeShape>
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnSelect25Tapped" />
+                            </Border.GestureRecognizers>
+                            <VerticalStackLayout HorizontalOptions="Center" Spacing="2">
+                                <Label Text="25 min" FontSize="14" FontAttributes="Bold" TextColor="#4ADE80" HorizontalOptions="Center" />
+                                <Label Text="Pomodoro" FontSize="11" TextColor="#A1A1AA" HorizontalOptions="Center" />
+                            </VerticalStackLayout>
+                        </Border>
+
+                        <!-- Carte 2 : 50 min -->
+                        <Border x:Name="Card50" BackgroundColor="#27272A" Stroke="Transparent" StrokeThickness="2" Padding="15,10">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="12" />
+                            </Border.StrokeShape>
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnSelect50Tapped" />
+                            </Border.GestureRecognizers>
+                            <VerticalStackLayout HorizontalOptions="Center" Spacing="2">
+                                <Label Text="50 min" FontSize="14" FontAttributes="Bold" TextColor="#4ADE80" HorizontalOptions="Center" />
+                                <Label Text="Deep Work" FontSize="11" TextColor="#A1A1AA" HorizontalOptions="Center" />
+                            </VerticalStackLayout>
+                        </Border>
+
+                        <!-- Carte 3 : Libre -->
+                        <Border x:Name="CardLibre" BackgroundColor="#27272A" Stroke="Transparent" StrokeThickness="2" Padding="15,10">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="12" />
+                            </Border.StrokeShape>
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnSelectLibreTapped" />
+                            </Border.GestureRecognizers>
+                            <VerticalStackLayout HorizontalOptions="Center" Spacing="2">
+                                <Label Text="Libre" FontSize="14" FontAttributes="Bold" TextColor="#4ADE80" HorizontalOptions="Center" />
+                                <Label Text="Chrono" FontSize="11" TextColor="#A1A1AA" HorizontalOptions="Center" />
+                            </VerticalStackLayout>
+                        </Border>
+
+                    </HorizontalStackLayout>
+
+                    <!-- Bouton de lancement de session -->
+                    <Button Text="Lance ta première session pour commencer" 
+                            TextColor="Black" 
+                            BackgroundColor="#4ADE80" 
+                            FontAttributes="Bold" 
+                            HeightRequest="50" 
+                            CornerRadius="25" 
+                            Margin="0,10,0,20" 
+                            Clicked="OnStartSessionClicked" />
+                </VerticalStackLayout>
+            </ScrollView>
+
+            <!-- LA BARRE DE NAVIGATION FLOTTANTE -->
+            <Frame VerticalOptions="End" 
+                   BackgroundColor="#27272A" 
+                   CornerRadius="35" 
+                   HasShadow="True" 
+                   Margin="20, 0, 20, 20" 
+                    Padding="15, 6" 
+                   BorderColor="Transparent">
+                <Grid ColumnDefinitions="*, *, *">
+                    <!-- Accueil -->
+                    <VerticalStackLayout Grid.Column="0" HorizontalOptions="Center" Spacing="2">
+                        <ImageButton Source="timer_active.svg" HeightRequest="12" WidthRequest="12" Padding="0" BackgroundColor="Transparent" />
+                        <Label Text="Accueil" FontSize="11" TextColor="#4ADE80" HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+
+                    <!-- Statistiques -->
+                    <VerticalStackLayout Grid.Column="1" HorizontalOptions="Center" Spacing="2">
+                        <ImageButton Source="statistics.svg" HeightRequest="12" WidthRequest="12" Padding="0" BackgroundColor="Transparent" Clicked="OnNavigateStats" />
+                        <Label Text="Statistiques" FontSize="11" TextColor="#A1A1AA" HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+
+                    <!-- Paramètres -->
+                    <VerticalStackLayout Grid.Column="2" HorizontalOptions="Center" Spacing="2">
+                        <ImageButton Source="settings.svg" HeightRequest="12" WidthRequest="12" Padding="0" BackgroundColor="Transparent" Clicked="OnNavigateSettings" />
+                        <Label Text="Paramètres" FontSize="11" TextColor="#A1A1AA" HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                </Grid>
+            </Frame>
+
+        </Grid>
+    </Grid>
+</ContentPage>

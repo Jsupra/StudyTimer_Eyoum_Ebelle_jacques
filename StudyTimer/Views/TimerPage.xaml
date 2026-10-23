@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StudyTimer.Views.TimerPage"
+             BackgroundColor="#000000"
+             Shell.NavBarIsVisible="False">
+
+    <Grid RowDefinitions="Auto, *">
+
+        <!-- ======================================= -->
+        <!-- 1. EN-TÊTE FIXE (Ligne 0)               -->
+        <!-- ======================================= -->
+        <Grid Grid.Row="0" 
+              ColumnDefinitions="*, Auto, *" 
+              Padding="20, 50, 20, 10" 
+              BackgroundColor="Transparent"
+              ZIndex="1">
+
+            <!-- Bouton Retour -->
+            <Frame Grid.Column="0" BackgroundColor="#121212" CornerRadius="16" HeightRequest="32" WidthRequest="32" Padding="0" HasShadow="False" HorizontalOptions="Start" VerticalOptions="Center">
+                <ImageButton Source="back_icon.png" HeightRequest="14" WidthRequest="14" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="Transparent" Clicked="OnBackClicked" />
+            </Frame>
+
+            <!-- Pilule Centrale -->
+            <Frame Grid.Column="1" BackgroundColor="#121212" CornerRadius="20" Padding="20,8" HasShadow="False" HorizontalOptions="Center" VerticalOptions="Center" BorderColor="Transparent">
+                <VerticalStackLayout Spacing="0" HorizontalOptions="Center">
+                    <HorizontalStackLayout Spacing="6" HorizontalOptions="Center">
+                        <Image Source="studytimerlogo.png" HeightRequest="16" WidthRequest="16" VerticalOptions="Center"/>
+                        <Label Text="StudyTimer" FontSize="14" FontAttributes="Bold" TextColor="White" VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+                    <Label Text="Minuteur" FontSize="10" TextColor="#A1A1AA" HorizontalOptions="Center" Margin="0,2,0,0"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Avatar Utilisateur -->
+            <Frame Grid.Column="2" BackgroundColor="#121212" CornerRadius="16" HeightRequest="32" WidthRequest="32" Padding="0" HasShadow="False" HorizontalOptions="End" VerticalOptions="Center">
+                <Image Source="avatar_placeholder.png" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center" VerticalOptions="Center" />
+            </Frame>
+        </Grid>
+
+        <!-- ======================================= -->
+        <!-- 2. CONTENU DU MINUTEUR (Ligne 1)        -->
+        <!-- ======================================= -->
+        <ScrollView Grid.Row="1" Padding="20, 20, 20, 40">
+            <VerticalStackLayout Spacing="35" VerticalOptions="Center">
+
+                <!-- Contexte de la session -->
+                <VerticalStackLayout Spacing="8" HorizontalOptions="Center">
+                    <Frame BackgroundColor="#1A2E20" CornerRadius="8" Padding="12,4" HasShadow="False" BorderColor="Transparent" HorizontalOptions="Center">
+                        <Label x:Name="SubjectLabel" Text="ALGORITHMIQUE AVANCÉE" FontSize="10" FontAttributes="Bold" TextColor="#A1A1AA" CharacterSpacing="1" />
+                    </Frame>
+                    <Label x:Name="CycleLabel" Text="• CYCLE 1/4  • MODE FOCUS" FontSize="11" FontAttributes="Bold" TextColor="#38BDF8" HorizontalOptions="Center" CharacterSpacing="1"/>
+                </VerticalStackLayout>
+
+                <!-- LE CERCLE DU CHRONOMÈTRE -->
+                <Border Stroke="#4ADE80" 
+                        StrokeThickness="4" 
+                        HeightRequest="280" 
+                        WidthRequest="280" 
+                        HorizontalOptions="Center"
+                        BackgroundColor="Transparent">
+
+                    <!-- Pour faire un cercle parfait, le StrokeShape doit avoir un radius = moitié de la taille -->
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="140" />
+                    </Border.StrokeShape>
+
+                    <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="5">
+                        <Label x:Name="TimeLabel" 
+                               Text="25:00" 
+                               FontSize="64" 
+                               FontAttributes="Bold" 
+                               TextColor="White" 
+                               HorizontalOptions="Center" />
+
+                        <HorizontalStackLayout Spacing="6" HorizontalOptions="Center">
+                            <Label Text="🌙" FontSize="12" VerticalOptions="Center"/>
+                            <Label Text="SESSION PROFONDE" FontSize="11" TextColor="#A1A1AA" FontAttributes="Bold" VerticalOptions="Center" CharacterSpacing="1" />
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
+                </Border>
+
+<<<<<<< HEAD
+                <!-- Indicateurs de progression dynamiques -->
+                <HorizontalStackLayout x:Name="DotsContainer" Spacing="8" HorizontalOptions="Center">
+                    
+=======
+                <!-- Indicateurs de progression (Points) -->
+                <HorizontalStackLayout Spacing="8" HorizontalOptions="Center">
+                    <BoxView Color="#4ADE80" WidthRequest="6" HeightRequest="6" CornerRadius="3" />
+                    <BoxView Color="#27272A" WidthRequest="6" HeightRequest="6" CornerRadius="3" />
+                    <BoxView Color="#27272A" WidthRequest="6" HeightRequest="6" CornerRadius="3" />
+                    <BoxView Color="#27272A" WidthRequest="6" HeightRequest="6" CornerRadius="3" />
+>>>>>>> 0832fb5f0367f7ff38136b808dee924e419fccbc
+                </HorizontalStackLayout>
+
+                <!-- Boutons d'action -->
+                <VerticalStackLayout Spacing="15" Margin="0, 20, 0, 0">
+
+                    <Button x:Name="PauseResumeButton" 
+                            Text="METTRE EN PAUSE" 
+                            TextColor="Black" 
+                            BackgroundColor="#4ADE80" 
+                            FontAttributes="Bold" 
+                            HeightRequest="55" 
+                            CornerRadius="27" 
+                            Clicked="OnPauseResumeClicked" />
+
+                    <Button Text="ARRÊTER" 
+                            TextColor="#A1A1AA" 
+                            BackgroundColor="#121212" 
+                            FontAttributes="Bold" 
+                            HeightRequest="55" 
+                            CornerRadius="27" 
+                            Clicked="OnStopClicked" />
+                </VerticalStackLayout>
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StudyTimer.Views.RegisterPage"
+             BackgroundColor="#000000"
+             Shell.NavBarIsVisible="False">
+
+    <Grid RowDefinitions="Auto, *">
+
+        <!-- ======================================= -->
+        <!-- 1. EN-TÊTE (Ligne 0 - Bouton Retour)    -->
+        <!-- ======================================= -->
+        <Grid Grid.Row="0" Padding="20, 50, 20, 10" BackgroundColor="Transparent">
+            <!-- Bouton Retour -->
+            <Frame BackgroundColor="#121212" 
+                   CornerRadius="16" 
+                   HeightRequest="32" 
+                   WidthRequest="32" 
+                   Padding="0" 
+                   HasShadow="False" 
+                   HorizontalOptions="Start" 
+                   VerticalOptions="Center">
+                <ImageButton Source="back_icon.png" 
+                             HeightRequest="14" 
+                             WidthRequest="14" 
+                             HorizontalOptions="Center" 
+                             VerticalOptions="Center" 
+                             BackgroundColor="Transparent" 
+                             Clicked="OnBackClicked" />
+            </Frame>
+        </Grid>
+
+        <!-- ======================================= -->
+        <!-- 2. FORMULAIRE D'INSCRIPTION (Ligne 1)   -->
+        <!-- ======================================= -->
+        <ScrollView Grid.Row="1" Padding="25, 10, 25, 40">
+            <VerticalStackLayout Spacing="30">
+
+                <!-- Logo et Titre -->
+                <VerticalStackLayout Spacing="10" HorizontalOptions="Center" Margin="0,10,0,10">
+                    <Image Source="studytimerlogo.png" HeightRequest="60" WidthRequest="60" HorizontalOptions="Center" />
+                    <Label Text="Créer un compte" FontSize="28" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center" />
+                    <Label Text="Rejoignez StudyTimer pour optimiser vos révisions" FontSize="13" TextColor="#A1A1AA" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
+                </VerticalStackLayout>
+
+                <!-- Champs de saisie -->
+                <VerticalStackLayout Spacing="15">
+
+                    <!-- Champ : Nom d'utilisateur -->
+                    <Frame BackgroundColor="#121212" CornerRadius="12" Padding="15,5" HasShadow="False" BorderColor="Transparent">
+                        <Entry Placeholder="Nom d'utilisateur" 
+                               TextColor="White" 
+                               PlaceholderColor="#A1A1AA" 
+                               ClearButtonVisibility="WhileEditing"
+                               BackgroundColor="Transparent" />
+                    </Frame>
+
+                    <!-- Champ : Email -->
+                    <Frame BackgroundColor="#121212" CornerRadius="12" Padding="15,5" HasShadow="False" BorderColor="Transparent">
+                        <Entry Placeholder="Adresse e-mail" 
+                               Keyboard="Email" 
+                               TextColor="White" 
+                               PlaceholderColor="#A1A1AA" 
+                               ClearButtonVisibility="WhileEditing"
+                               BackgroundColor="Transparent" />
+                    </Frame>
+
+                    <!-- Champ : Mot de passe -->
+                    <Frame BackgroundColor="#121212" CornerRadius="12" Padding="15,5" HasShadow="False" BorderColor="Transparent">
+                        <Entry Placeholder="Mot de passe" 
+                               IsPassword="True" 
+                               TextColor="White" 
+                               PlaceholderColor="#A1A1AA" 
+                               ClearButtonVisibility="WhileEditing"
+                               BackgroundColor="Transparent" />
+                    </Frame>
+
+                    <!-- Champ : Confirmer le mot de passe -->
+                    <Frame BackgroundColor="#121212" CornerRadius="12" Padding="15,5" HasShadow="False" BorderColor="Transparent">
+                        <Entry Placeholder="Confirmer le mot de passe" 
+                               IsPassword="True" 
+                               TextColor="White" 
+                               PlaceholderColor="#A1A1AA" 
+                               ClearButtonVisibility="WhileEditing"
+                               BackgroundColor="Transparent" />
+                    </Frame>
+
+                </VerticalStackLayout>
+
+                <!-- Bouton d'action principal -->
+                <Button Text="S'inscrire" 
+                        TextColor="Black" 
+                        BackgroundColor="#4ADE80" 
+                        FontAttributes="Bold" 
+                        HeightRequest="50" 
+                        CornerRadius="25" 
+                        Margin="0,10,0,0" 
+                        Clicked="OnRegisterClicked" />
+
+                <!-- Lien vers la page de connexion -->
+                <HorizontalStackLayout HorizontalOptions="Center" Spacing="5" Margin="0,15,0,0">
+                    <Label Text="Déjà un compte ?" FontSize="13" TextColor="#A1A1AA" VerticalOptions="Center" />
+                    <Label Text="Se connecter" FontSize="13" FontAttributes="Bold" TextColor="#4ADE80" VerticalOptions="Center">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnLoginTapped" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                </HorizontalStackLayout>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+    </Grid>
+</ContentPage>
