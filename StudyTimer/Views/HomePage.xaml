@@ -10,7 +10,6 @@
         <viewmodels:HomeViewModel />
     </ContentPage.BindingContext>
 
-    <!-- LA CORRECTION EST ICI : On sépare l'écran en deux (En-tête et Reste) -->
     <Grid RowDefinitions="Auto, *">
 
         <!-- ======================================= -->
@@ -26,33 +25,33 @@
             <Frame Grid.Column="1" 
                    BackgroundColor="#121212" 
                    CornerRadius="20" 
-                   Padding="20,8" 
+                   Padding="15,6" 
                    HasShadow="False" 
                    HorizontalOptions="Center" 
                    VerticalOptions="Center"
                    BorderColor="Transparent">
                 <VerticalStackLayout Spacing="0" HorizontalOptions="Center">
-                    <HorizontalStackLayout Spacing="6" HorizontalOptions="Center">
-                        <Image Source="studytimerlogo.png" HeightRequest="16" WidthRequest="16" VerticalOptions="Center"/>
-                        <Label Text="StudyTimer" FontSize="14" FontAttributes="Bold" TextColor="White" VerticalOptions="Center" />
+                    <HorizontalStackLayout Spacing="4" HorizontalOptions="Center">
+                        <Image Source="studytimerlogo.svg" HeightRequest="12" WidthRequest="12" VerticalOptions="Center"/>
+                        <Label Text="StudyTimer" FontSize="12" FontAttributes="Bold" TextColor="White" VerticalOptions="Center" />
                     </HorizontalStackLayout>
-                    <Label Text="Tableau de bord" FontSize="10" TextColor="#A1A1AA" HorizontalOptions="Center" Margin="0,2,0,0"/>
+                    <Label Text="Tableau de bord" FontSize="9" TextColor="#A1A1AA" HorizontalOptions="Center" Margin="0,2,0,0"/>
                 </VerticalStackLayout>
             </Frame>
 
             <!-- Avatar Utilisateur (Cercle) -->
             <Frame Grid.Column="2" 
                    BackgroundColor="#121212" 
-                   CornerRadius="20" 
-                   HeightRequest="40" 
-                   WidthRequest="40" 
+                   CornerRadius="16" 
+                   HeightRequest="32" 
+                   WidthRequest="32" 
                    Padding="0" 
                    HasShadow="False" 
                    HorizontalOptions="End" 
                    VerticalOptions="Center">
-                <Image Source="avatar_placeholder.png" 
-                       HeightRequest="24" 
-                       WidthRequest="24" 
+                <Image Source="avatar_placeholder.svg" 
+                       HeightRequest="16" 
+                       WidthRequest="16" 
                        HorizontalOptions="Center" 
                        VerticalOptions="Center" />
             </Frame>
@@ -85,7 +84,7 @@
                                 <Label Grid.Column="1" Text="0%" FontSize="15" FontAttributes="Bold" TextColor="#A1A1AA" VerticalOptions="Center" />
                             </Grid>
 
-                            <Label Text="0h / 4h00" FontSize="32" FontAttributes="Bold" TextColor="#4ADE80" />
+                            <Label x:Name="DailyGoalDisplayLabel" Text="0h / 2h00" FontSize="32" FontAttributes="Bold" TextColor="#4ADE80" />
 
                             <ProgressBar Progress="0.0" 
                                          ProgressColor="#4ADE80" 
@@ -96,7 +95,7 @@
 
                     <!-- Illustration Centrale -->
                     <VerticalStackLayout Spacing="15" HorizontalOptions="Center" Margin="0,20,0,20">
-                        <Image Source="empty_state_book.png" HeightRequest="90" WidthRequest="90" Opacity="0.5" HorizontalOptions="Center"/>
+                        <Image Source="empty_state_book.svg" HeightRequest="70" WidthRequest="70" Opacity="0.5" HorizontalOptions="Center"/>
                         <Label Text="Aucune révision aujourd'hui" FontSize="17" TextColor="#FFFFFF" FontAttributes="Bold" HorizontalOptions="Center" />
                         <Label Text="Lancez votre première session d'étude pour activer vos métriques et construire votre série." FontSize="13" TextColor="#A1A1AA" HorizontalTextAlignment="Center" LineBreakMode="WordWrap" MaximumWidthRequest="300" HorizontalOptions="Center" />
                     </VerticalStackLayout>
@@ -171,19 +170,19 @@
                 <Grid ColumnDefinitions="*, *, *">
                     <!-- Accueil -->
                     <VerticalStackLayout Grid.Column="0" HorizontalOptions="Center" Spacing="2">
-                        <ImageButton Source="timer_active.svg" HeightRequest="12" WidthRequest="12" Padding="0" BackgroundColor="Transparent" />
+                        <ImageButton Source="timer_active.svg" HeightRequest="14" WidthRequest="14" Padding="0" BackgroundColor="Transparent" />
                         <Label Text="Accueil" FontSize="11" TextColor="#4ADE80" HorizontalOptions="Center" />
                     </VerticalStackLayout>
 
                     <!-- Statistiques -->
                     <VerticalStackLayout Grid.Column="1" HorizontalOptions="Center" Spacing="2">
-                        <ImageButton Source="statistics.svg" HeightRequest="12" WidthRequest="12" Padding="0" BackgroundColor="Transparent" Clicked="OnNavigateStats" />
+                        <ImageButton Source="statistics.svg" HeightRequest="14" WidthRequest="14" Padding="0" BackgroundColor="Transparent" Clicked="OnNavigateStats" />
                         <Label Text="Statistiques" FontSize="11" TextColor="#A1A1AA" HorizontalOptions="Center" />
                     </VerticalStackLayout>
 
                     <!-- Paramètres -->
                     <VerticalStackLayout Grid.Column="2" HorizontalOptions="Center" Spacing="2">
-                        <ImageButton Source="settings.svg" HeightRequest="12" WidthRequest="12" Padding="0" BackgroundColor="Transparent" Clicked="OnNavigateSettings" />
+                        <ImageButton Source="settings.svg" HeightRequest="14" WidthRequest="14" Padding="0" BackgroundColor="Transparent" Clicked="OnNavigateSettings" />
                         <Label Text="Paramètres" FontSize="11" TextColor="#A1A1AA" HorizontalOptions="Center" />
                     </VerticalStackLayout>
                 </Grid>

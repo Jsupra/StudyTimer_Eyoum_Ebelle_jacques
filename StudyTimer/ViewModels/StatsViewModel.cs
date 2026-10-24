@@ -40,9 +40,24 @@ namespace StudyTimer.ViewModels
             if (AppSession.CurrentUser == null) return;
 
             var records = await _databaseService.GetSessionRecordsAsync(AppSession.CurrentUser.Id);
+            var subjects = await _databaseService.GetSubjectsAsync(AppSession.CurrentUser.Id);
+            var subjectDict = subjects.ToDictionary(s => s.Id, s => s);
+
             SessionHistory.Clear();
             foreach (var r in records)
             {
+                if (subjectDict.TryGetValue(r.SubjectId, out var subject))
+                {
+                    r.SubjectColor = subject.Color;
+                }
+                else if (!string.IsNullOrEmpty(r.SubjectName))
+                {
+                    var matchByName = subjects.FirstOrDefault(s => s.Name.Equals(r.SubjectName, StringComparison.OrdinalIgnoreCase));
+                    if (matchByName != null)
+                    {
+                        r.SubjectColor = matchByName.Color;
+                    }
+                }
                 SessionHistory.Add(r);
             }
 

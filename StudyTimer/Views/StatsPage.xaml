@@ -33,9 +33,9 @@
                    HasShadow="False" 
                    HorizontalOptions="Start" 
                    VerticalOptions="Center">
-                <ImageButton Source="back_icon.png" 
-                             HeightRequest="14" 
-                             WidthRequest="14" 
+                <ImageButton Source="back_icon.svg" 
+                             HeightRequest="12" 
+                             WidthRequest="12" 
                              HorizontalOptions="Center" 
                              VerticalOptions="Center" 
                              BackgroundColor="Transparent" 
@@ -43,19 +43,19 @@
             </Frame>
 
             <!-- Pilule Centrale (Logo + Titre "Statistiques") -->
-            <Frame Grid.Column="1" BackgroundColor="#121212" CornerRadius="20" Padding="20,8" HasShadow="False" HorizontalOptions="Center" VerticalOptions="Center" BorderColor="Transparent">
+            <Frame Grid.Column="1" BackgroundColor="#121212" CornerRadius="20" Padding="15,6" HasShadow="False" HorizontalOptions="Center" VerticalOptions="Center" BorderColor="Transparent">
                 <VerticalStackLayout Spacing="0" HorizontalOptions="Center">
-                    <HorizontalStackLayout Spacing="6" HorizontalOptions="Center">
-                        <Image Source="studytimerlogo.png" HeightRequest="16" WidthRequest="16" VerticalOptions="Center"/>
-                        <Label Text="StudyTimer" FontSize="14" FontAttributes="Bold" TextColor="White" VerticalOptions="Center" />
+                    <HorizontalStackLayout Spacing="4" HorizontalOptions="Center">
+                        <Image Source="studytimerlogo.svg" HeightRequest="12" WidthRequest="12" VerticalOptions="Center"/>
+                        <Label Text="StudyTimer" FontSize="12" FontAttributes="Bold" TextColor="White" VerticalOptions="Center" />
                     </HorizontalStackLayout>
-                    <Label Text="Statistiques" FontSize="10" TextColor="#A1A1AA" HorizontalOptions="Center" Margin="0,2,0,0"/>
+                    <Label Text="Statistiques" FontSize="9" TextColor="#A1A1AA" HorizontalOptions="Center" Margin="0,2,0,0"/>
                 </VerticalStackLayout>
             </Frame>
 
             <!-- Avatar Utilisateur -->
-            <Frame Grid.Column="2" BackgroundColor="#121212" CornerRadius="20" HeightRequest="40" WidthRequest="40" Padding="0" HasShadow="False" HorizontalOptions="End" VerticalOptions="Center">
-                <Image Source="avatar_placeholder.png" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center" VerticalOptions="Center" />
+            <Frame Grid.Column="2" BackgroundColor="#121212" CornerRadius="16" HeightRequest="32" WidthRequest="32" Padding="0" HasShadow="False" HorizontalOptions="End" VerticalOptions="Center">
+                <Image Source="avatar_placeholder.svg" HeightRequest="16" WidthRequest="16" HorizontalOptions="Center" VerticalOptions="Center" />
             </Frame>
         </Grid>
 
@@ -87,13 +87,13 @@
                         </Frame>
                     </Grid>
 
-                    <!-- BLOC GRAPHIQUE (Temps total) -->
+                    <!-- BLOC GRAPHIQUE (Temps total & Graphique par jour) -->
                     <Frame BackgroundColor="#121212" CornerRadius="16" HasShadow="False" Padding="20" BorderColor="Transparent">
                         <VerticalStackLayout Spacing="20">
                             <!-- Titre du graphique (lié au ViewModel) -->
                             <VerticalStackLayout Spacing="2">
                                 <Label Text="{Binding TotalStudyTime}" FontSize="26" FontAttributes="Bold" TextColor="White" />
-                                <Label Text="Temps total enregistré" FontSize="13" TextColor="#A1A1AA" />
+                                <Label Text="Temps total cette semaine" FontSize="13" TextColor="#A1A1AA" />
                             </VerticalStackLayout>
 
                             <!-- Sessions terminées count -->
@@ -101,6 +101,45 @@
                                 <Label Text="Sessions terminées :" FontSize="13" TextColor="#A1A1AA" />
                                 <Label Text="{Binding CompletedSessionsCount}" FontSize="13" FontAttributes="Bold" TextColor="#4ADE80" />
                             </HorizontalStackLayout>
+
+                            <!-- Graphique en barres des heures d'études passées par jour -->
+                            <Grid ColumnDefinitions="*,*,*,*,*,*,*" HeightRequest="120" ColumnSpacing="10" VerticalOptions="End" Margin="0,15,0,0">
+                                <!-- Lundi -->
+                                <VerticalStackLayout Grid.Column="0" VerticalOptions="End" Spacing="8">
+                                    <BoxView Color="#4ADE80" WidthRequest="22" HeightRequest="60" CornerRadius="4" HorizontalOptions="Center" />
+                                    <Label Text="L" FontSize="11" TextColor="#A1A1AA" HorizontalOptions="Center" />
+                                </VerticalStackLayout>
+                                <!-- Mardi -->
+                                <VerticalStackLayout Grid.Column="1" VerticalOptions="End" Spacing="8">
+                                    <BoxView Color="#4ADE80" WidthRequest="22" HeightRequest="30" CornerRadius="4" HorizontalOptions="Center" />
+                                    <Label Text="M" FontSize="11" TextColor="#A1A1AA" HorizontalOptions="Center" />
+                                </VerticalStackLayout>
+                                <!-- Mercredi -->
+                                <VerticalStackLayout Grid.Column="2" VerticalOptions="End" Spacing="8">
+                                    <BoxView Color="#4ADE80" WidthRequest="22" HeightRequest="85" CornerRadius="4" HorizontalOptions="Center" />
+                                    <Label Text="M" FontSize="11" TextColor="#A1A1AA" HorizontalOptions="Center" />
+                                </VerticalStackLayout>
+                                <!-- Jeudi -->
+                                <VerticalStackLayout Grid.Column="3" VerticalOptions="End" Spacing="8">
+                                    <BoxView Color="#4ADE80" WidthRequest="22" HeightRequest="45" CornerRadius="4" HorizontalOptions="Center" />
+                                    <Label Text="J" FontSize="11" TextColor="#A1A1AA" HorizontalOptions="Center" />
+                                </VerticalStackLayout>
+                                <!-- Vendredi -->
+                                <VerticalStackLayout Grid.Column="4" VerticalOptions="End" Spacing="8">
+                                    <BoxView Color="#4ADE80" WidthRequest="22" HeightRequest="100" CornerRadius="4" HorizontalOptions="Center" />
+                                    <Label Text="V" FontSize="11" TextColor="#A1A1AA" HorizontalOptions="Center" />
+                                </VerticalStackLayout>
+                                <!-- Samedi -->
+                                <VerticalStackLayout Grid.Column="5" VerticalOptions="End" Spacing="8">
+                                    <BoxView Color="#4ADE80" WidthRequest="22" HeightRequest="20" CornerRadius="4" HorizontalOptions="Center" />
+                                    <Label Text="S" FontSize="11" TextColor="#A1A1AA" HorizontalOptions="Center" />
+                                </VerticalStackLayout>
+                                <!-- Dimanche -->
+                                <VerticalStackLayout Grid.Column="6" VerticalOptions="End" Spacing="8">
+                                    <BoxView Color="#4ADE80" WidthRequest="22" HeightRequest="70" CornerRadius="4" HorizontalOptions="Center" />
+                                    <Label Text="D" FontSize="11" TextColor="#A1A1AA" HorizontalOptions="Center" />
+                                </VerticalStackLayout>
+                            </Grid>
                         </VerticalStackLayout>
                     </Frame>
 
@@ -117,7 +156,23 @@
                                 <DataTemplate x:DataType="models:StudySessionRecord">
                                     <Frame BackgroundColor="#121212" CornerRadius="12" Padding="15" Margin="0,4" HasShadow="False" BorderColor="Transparent">
                                         <Grid ColumnDefinitions="Auto, *, Auto" ColumnSpacing="15" VerticalOptions="Center">
-                                            <BoxView Grid.Column="0" Color="#4ADE80" WidthRequest="30" HeightRequest="30" CornerRadius="8" VerticalOptions="Center" />
+                                            <Frame Grid.Column="0" 
+                                                   BackgroundColor="{Binding SubjectColor}" 
+                                                   CornerRadius="8" 
+                                                   HeightRequest="30" 
+                                                   WidthRequest="30" 
+                                                   Padding="0" 
+                                                   HasShadow="False" 
+                                                   BorderColor="Transparent" 
+                                                   VerticalOptions="Center" 
+                                                   HorizontalOptions="Center">
+                                                <Label Text="{Binding SubjectInitial}" 
+                                                       FontSize="12" 
+                                                       FontAttributes="Bold" 
+                                                       TextColor="White" 
+                                                       HorizontalOptions="Center" 
+                                                       VerticalOptions="Center" />
+                                            </Frame>
                                             <VerticalStackLayout Grid.Column="1" Spacing="4" VerticalOptions="Center">
                                                 <Label Text="{Binding SubjectName}" FontSize="14" FontAttributes="Bold" TextColor="White" />
                                                 <Label Text="{Binding CompletedAt, StringFormat='{0:dd/MM/yyyy HH:mm}'}" FontSize="11" TextColor="#A1A1AA" />
@@ -144,19 +199,19 @@
                 <Grid ColumnDefinitions="*, *, *">
                     <!-- Accueil -->
                     <VerticalStackLayout Grid.Column="0" HorizontalOptions="Center" Spacing="2">
-                        <ImageButton Source="timer.svg" HeightRequest="12" WidthRequest="12" Padding="0" BackgroundColor="Transparent" Clicked="OnNavigateHome" />
+                        <ImageButton Source="timer.svg" HeightRequest="14" WidthRequest="14" Padding="0" BackgroundColor="Transparent" Clicked="OnNavigateHome" />
                         <Label Text="Accueil" FontSize="11" TextColor="#A1A1AA" HorizontalOptions="Center" />
                     </VerticalStackLayout>
 
                     <!-- Statistiques (Actif) -->
                     <VerticalStackLayout Grid.Column="1" HorizontalOptions="Center" Spacing="2">
-                        <ImageButton Source="statistics_active.svg" HeightRequest="12" WidthRequest="12" Padding="0" BackgroundColor="Transparent" />
+                        <ImageButton Source="statistics_active.svg" HeightRequest="14" WidthRequest="14" Padding="0" BackgroundColor="Transparent" />
                         <Label Text="Statistiques" FontSize="11" TextColor="#4ADE80" HorizontalOptions="Center" />
                     </VerticalStackLayout>
 
                     <!-- Paramètres -->
                     <VerticalStackLayout Grid.Column="2" HorizontalOptions="Center" Spacing="2">
-                        <ImageButton Source="settings.svg" HeightRequest="12" WidthRequest="12" Padding="0" BackgroundColor="Transparent" Clicked="OnNavigateSettings" />
+                        <ImageButton Source="settings.svg" HeightRequest="14" WidthRequest="14" Padding="0" BackgroundColor="Transparent" Clicked="OnNavigateSettings" />
                         <Label Text="Paramètres" FontSize="11" TextColor="#A1A1AA" HorizontalOptions="Center" />
                     </VerticalStackLayout>
                 </Grid>

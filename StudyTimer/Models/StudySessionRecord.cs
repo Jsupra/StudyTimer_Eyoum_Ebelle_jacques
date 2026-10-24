@@ -18,5 +18,11 @@ namespace StudyTimer.Models
         public int CycleCount { get; set; } = 1;
 
         public DateTime CompletedAt { get; set; } = DateTime.Now;
+
+        [Ignore]
+        public string SubjectColor { get; set; } = "#4ADE80";
+
+        [Ignore]
+        public string SubjectInitial => !string.IsNullOrEmpty(SubjectName) ? SubjectName.Substring(0, 1).ToUpper() : "S";
     }
 }

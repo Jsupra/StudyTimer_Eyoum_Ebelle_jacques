@@ -1,3 +1,6 @@
+using StudyTimer.Models;
+using StudyTimer.Services;
+
 namespace StudyTimer.Views;
 
 [QueryProperty(nameof(Subject), "subject")]
@@ -5,12 +8,22 @@ namespace StudyTimer.Views;
 [QueryProperty(nameof(TotalCycles), "cycles")]
 public partial class SessionSummaryPage : ContentPage
 {
+    private readonly DatabaseService _databaseService;
+    private string _subjectName = "Ã‰tude";
+    private int _durationMinutes = 25;
+    private int _cycleCount = 1;
+    private bool _isSaved = false;
+
     public string Subject
     {
         set
         {
-            if (SubjectLabel != null)
-                SubjectLabel.Text = Uri.UnescapeDataString(value).ToUpper();
+            if (!string.IsNullOrEmpty(value))
+            {
+                _subjectName = Uri.UnescapeDataString(value);
+                if (SubjectLabel != null)
+                    SubjectLabel.Text = _subjectName.ToUpper();
+            }
         }
     }
 
@@ -20,6 +33,7 @@ public partial class SessionSummaryPage : ContentPage
         {
             if (int.TryParse(value, out int minutes))
             {
+                _durationMinutes = minutes;
                 int hours = minutes / 60;
                 int remainingMinutes = minutes % 60;
 
@@ -38,25 +52,57 @@ public partial class SessionSummaryPage : ContentPage
     {
         set
         {
-            if (CyclesLabel != null)
-                CyclesLabel.Text = $"{value} cycles";
+            if (int.TryParse(value, out int cycles))
+            {
+                _cycleCount = cycles;
+                if (CyclesLabel != null)
+                    CyclesLabel.Text = $"{cycles} cycles";
+            }
         }
     }
 
     public SessionSummaryPage()
     {
         InitializeComponent();
+        _databaseService = new DatabaseService();
+    }
+
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+
+        if (!_isSaved && AppSession.CurrentUser != null)
+        {
+            _isSaved = true;
+            try
+            {
+                var subjects = await _databaseService.GetSubjectsAsync(AppSession.CurrentUser.Id);
+                var subject = subjects.FirstOrDefault(s => s.Name.Equals(_subjectName, StringComparison.OrdinalIgnoreCase)) ?? subjects.FirstOrDefault();
+
+                var record = new StudySessionRecord
+                {
+                    UserId = AppSession.CurrentUser.Id,
+                    SubjectId = subject?.Id ?? 0,
+                    SubjectName = _subjectName,
+                    DurationMinutes = _durationMinutes,
+                    CycleCount = _cycleCount,
+                    CompletedAt = DateTime.Now
+                };
+
+                await _databaseService.SaveSessionRecordAsync(record);
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Erreur enregistrement session summary: {ex.Message}");
+            }
+        }
     }
 
     private async void OnReturnHomeClicked(object sender, EventArgs e)
     {
-        // Enregistrement des statistiques en base de données à insérer ici plus tard
-
-        // Retourne à la racine (Accueil) de manière fluide
         await Shell.Current.GoToAsync("//HomePage", animate: true);
     }
 
-    // On bloque le bouton retour natif pour obliger l'utilisateur à valider via le bouton
     protected override bool OnBackButtonPressed()
     {
         MainThread.BeginInvokeOnMainThread(async () =>
