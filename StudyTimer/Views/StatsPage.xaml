@@ -78,12 +78,15 @@
                             <Label Text="Statistiques de&#10;Révision" FontSize="24" FontAttributes="Bold" TextColor="White" LineHeight="1.1" />
                         </VerticalStackLayout>
 
-                        <!-- Sélecteur "Cette semaine" -->
+                        <!-- Sélecteur de période -->
                         <Frame Grid.Column="1" BackgroundColor="#121212" CornerRadius="12" Padding="12,8" HasShadow="False" BorderColor="Transparent" VerticalOptions="Center">
                             <HorizontalStackLayout Spacing="5">
-                                <Label Text="Cette&#10;semaine" FontSize="11" TextColor="#A1A1AA" VerticalOptions="Center" />
+                                <Label Text="{Binding SelectedPeriodText}" FontSize="11" TextColor="#A1A1AA" VerticalOptions="Center" />
                                 <Label Text="▼" FontSize="10" TextColor="#A1A1AA" VerticalOptions="Center" Margin="5,0,0,0"/>
                             </HorizontalStackLayout>
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnSelectPeriodTapped" />
+                            </Frame.GestureRecognizers>
                         </Frame>
                     </Grid>
 
@@ -93,7 +96,7 @@
                             <!-- Titre du graphique (lié au ViewModel) -->
                             <VerticalStackLayout Spacing="2">
                                 <Label Text="{Binding TotalStudyTime}" FontSize="26" FontAttributes="Bold" TextColor="White" />
-                                <Label Text="Temps total cette semaine" FontSize="13" TextColor="#A1A1AA" />
+                                <Label Text="Temps total pour la période" FontSize="13" TextColor="#A1A1AA" />
                             </VerticalStackLayout>
 
                             <!-- Sessions terminées count -->
@@ -106,37 +109,37 @@
                             <Grid ColumnDefinitions="*,*,*,*,*,*,*" HeightRequest="120" ColumnSpacing="10" VerticalOptions="End" Margin="0,15,0,0">
                                 <!-- Lundi -->
                                 <VerticalStackLayout Grid.Column="0" VerticalOptions="End" Spacing="8">
-                                    <BoxView Color="#4ADE80" WidthRequest="22" HeightRequest="60" CornerRadius="4" HorizontalOptions="Center" />
+                                    <Border BackgroundColor="#4ADE80" Stroke="Transparent" StrokeShape="RoundRectangle 6" WidthRequest="22" HeightRequest="{Binding MondayHeight}" HorizontalOptions="Center" VerticalOptions="End" />
                                     <Label Text="L" FontSize="11" TextColor="#A1A1AA" HorizontalOptions="Center" />
                                 </VerticalStackLayout>
                                 <!-- Mardi -->
                                 <VerticalStackLayout Grid.Column="1" VerticalOptions="End" Spacing="8">
-                                    <BoxView Color="#4ADE80" WidthRequest="22" HeightRequest="30" CornerRadius="4" HorizontalOptions="Center" />
+                                    <Border BackgroundColor="#4ADE80" Stroke="Transparent" StrokeShape="RoundRectangle 6" WidthRequest="22" HeightRequest="{Binding TuesdayHeight}" HorizontalOptions="Center" VerticalOptions="End" />
                                     <Label Text="M" FontSize="11" TextColor="#A1A1AA" HorizontalOptions="Center" />
                                 </VerticalStackLayout>
                                 <!-- Mercredi -->
                                 <VerticalStackLayout Grid.Column="2" VerticalOptions="End" Spacing="8">
-                                    <BoxView Color="#4ADE80" WidthRequest="22" HeightRequest="85" CornerRadius="4" HorizontalOptions="Center" />
+                                    <Border BackgroundColor="#4ADE80" Stroke="Transparent" StrokeShape="RoundRectangle 6" WidthRequest="22" HeightRequest="{Binding WednesdayHeight}" HorizontalOptions="Center" VerticalOptions="End" />
                                     <Label Text="M" FontSize="11" TextColor="#A1A1AA" HorizontalOptions="Center" />
                                 </VerticalStackLayout>
                                 <!-- Jeudi -->
                                 <VerticalStackLayout Grid.Column="3" VerticalOptions="End" Spacing="8">
-                                    <BoxView Color="#4ADE80" WidthRequest="22" HeightRequest="45" CornerRadius="4" HorizontalOptions="Center" />
+                                    <Border BackgroundColor="#4ADE80" Stroke="Transparent" StrokeShape="RoundRectangle 6" WidthRequest="22" HeightRequest="{Binding ThursdayHeight}" HorizontalOptions="Center" VerticalOptions="End" />
                                     <Label Text="J" FontSize="11" TextColor="#A1A1AA" HorizontalOptions="Center" />
                                 </VerticalStackLayout>
                                 <!-- Vendredi -->
                                 <VerticalStackLayout Grid.Column="4" VerticalOptions="End" Spacing="8">
-                                    <BoxView Color="#4ADE80" WidthRequest="22" HeightRequest="100" CornerRadius="4" HorizontalOptions="Center" />
+                                    <Border BackgroundColor="#4ADE80" Stroke="Transparent" StrokeShape="RoundRectangle 6" WidthRequest="22" HeightRequest="{Binding FridayHeight}" HorizontalOptions="Center" VerticalOptions="End" />
                                     <Label Text="V" FontSize="11" TextColor="#A1A1AA" HorizontalOptions="Center" />
                                 </VerticalStackLayout>
                                 <!-- Samedi -->
                                 <VerticalStackLayout Grid.Column="5" VerticalOptions="End" Spacing="8">
-                                    <BoxView Color="#4ADE80" WidthRequest="22" HeightRequest="20" CornerRadius="4" HorizontalOptions="Center" />
+                                    <Border BackgroundColor="#4ADE80" Stroke="Transparent" StrokeShape="RoundRectangle 6" WidthRequest="22" HeightRequest="{Binding SaturdayHeight}" HorizontalOptions="Center" VerticalOptions="End" />
                                     <Label Text="S" FontSize="11" TextColor="#A1A1AA" HorizontalOptions="Center" />
                                 </VerticalStackLayout>
                                 <!-- Dimanche -->
                                 <VerticalStackLayout Grid.Column="6" VerticalOptions="End" Spacing="8">
-                                    <BoxView Color="#4ADE80" WidthRequest="22" HeightRequest="70" CornerRadius="4" HorizontalOptions="Center" />
+                                    <Border BackgroundColor="#4ADE80" Stroke="Transparent" StrokeShape="RoundRectangle 6" WidthRequest="22" HeightRequest="{Binding SundayHeight}" HorizontalOptions="Center" VerticalOptions="End" />
                                     <Label Text="D" FontSize="11" TextColor="#A1A1AA" HorizontalOptions="Center" />
                                 </VerticalStackLayout>
                             </Grid>

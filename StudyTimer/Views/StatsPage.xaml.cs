@@ -18,6 +18,18 @@ public partial class StatsPage : ContentPage
         }
     }
 
+    private async void OnSelectPeriodTapped(object sender, EventArgs e)
+    {
+        string action = await DisplayActionSheet("Période d'affichage", "Annuler", null, "Cette semaine", "Ce mois", "Tout l'historique");
+        if (!string.IsNullOrEmpty(action) && action != "Annuler")
+        {
+            if (BindingContext is StatsViewModel vm)
+            {
+                await vm.LoadStatsAsync(action);
+            }
+        }
+    }
+
     // Capture le bouton retour matériel (téléphone) pour éviter de fermer l'application
     protected override bool OnBackButtonPressed()
     {

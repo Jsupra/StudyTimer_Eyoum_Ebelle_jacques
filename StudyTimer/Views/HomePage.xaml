@@ -170,19 +170,19 @@
                 <Grid ColumnDefinitions="*, *, *">
                     <!-- Accueil -->
                     <VerticalStackLayout Grid.Column="0" HorizontalOptions="Center" Spacing="2">
-                        <ImageButton Source="timer_active.svg" HeightRequest="14" WidthRequest="14" Padding="0" BackgroundColor="Transparent" />
+                        <ImageButton Source="timer_active.svg" HeightRequest="11" WidthRequest="11" Padding="0" BackgroundColor="Transparent" />
                         <Label Text="Accueil" FontSize="11" TextColor="#4ADE80" HorizontalOptions="Center" />
                     </VerticalStackLayout>
 
                     <!-- Statistiques -->
                     <VerticalStackLayout Grid.Column="1" HorizontalOptions="Center" Spacing="2">
-                        <ImageButton Source="statistics.svg" HeightRequest="14" WidthRequest="14" Padding="0" BackgroundColor="Transparent" Clicked="OnNavigateStats" />
+                        <ImageButton Source="statistics.svg" HeightRequest="11" WidthRequest="11" Padding="0" BackgroundColor="Transparent" Clicked="OnNavigateStats" />
                         <Label Text="Statistiques" FontSize="11" TextColor="#A1A1AA" HorizontalOptions="Center" />
                     </VerticalStackLayout>
 
                     <!-- Paramètres -->
                     <VerticalStackLayout Grid.Column="2" HorizontalOptions="Center" Spacing="2">
-                        <ImageButton Source="settings.svg" HeightRequest="14" WidthRequest="14" Padding="0" BackgroundColor="Transparent" Clicked="OnNavigateSettings" />
+                        <ImageButton Source="settings.svg" HeightRequest="11" WidthRequest="11" Padding="0" BackgroundColor="Transparent" Clicked="OnNavigateSettings" />
                         <Label Text="Paramètres" FontSize="11" TextColor="#A1A1AA" HorizontalOptions="Center" />
                     </VerticalStackLayout>
                 </Grid>
